@@ -1,0 +1,53 @@
+TODO
+
+1. Prepare application:
+
+  1.1 install react/react-dom.
+  1.2 install redux/react-redux/redux-thunk.
+  1.3 install node-sass, sass-compiler.
+  1.4 install font-awesome for react.
+  1.5 install react-modal library.
+  1.6 install express.js
+  1.7 install webpack.
+  1.7 remove bower and angular reference files.
+  1.8 configure webpack.
+  //test and commit changes.
+
+2. App architecture: 
+   
+  2.1 HomePage: 
+      a. language nav-bar top right corner.
+      b. app name(btcjp) on the top left corner.
+      c. welcome text in the middle left side.
+      d. cointrader in the middle right side.
+      e. top coin rates in the bottom center.
+ 
+  2.2 CoinTrader Box:
+      a. Coin box in 1st row(return and withdaw coins).
+      b. 2 inputs in 2nd row(return and withdraw addres).
+      c. terms of service checkbox in 3rd row.
+      d. continue button in 4th row.
+      e. limits on top of box(max limit, min limit, miner fee).
+
+  2.3 Coin Box:
+      a. Coin Name
+      b. Coin Icon
+      c. Coin rate
+      d. on Click opens modal window to select different coin.
+ 
+  2.4 Modal Window:
+      a. response grid of Coin boxes.
+      b. closes on box select.
+
+  2.5 CoinTrader phase 2(additional): 
+      a. deposit balance.
+      b. QR address.
+      c. amount.
+      d. timer.
+      e. submit button.
+      f. display order ID.
+      
+   2.6 Top coins slide
+      a. top coins container.
+      b. slide of container in homepage.
+      c. links to external site. 
