@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import CoinBox from './CoinBox';
 import InputAddress from './InputAddress';
 import CoinList from '../components/CoinList';
+import CoinLimits from './CoinLimits';
 
 class CoinSelector extends React.Component {
     constructor(props) {
@@ -78,13 +79,7 @@ class CoinSelector extends React.Component {
                             }
                         </div>
                         {
-                        this.props.direction === 'in' &&
-                        <div className="">
-                            <div>Deposit Limit: 4.900$ </div>
-                            <div>Minimum Amount: 15</div>
-                            <div>Miner Fee: {this.state.coin && this.state.coin.minerFee}</div>
-                            <div>Rate: 00 </div>
-                        </div>
+                        this.props.direction === 'in' && <CoinLimits  />
                         }
                     </div>
                 </div>
