@@ -1,7 +1,13 @@
-export default (state = {}, actions) => {
+export default (state = [], actions) => {
     switch(actions.type) {
         case 'SET_COINS':
-            return actions.coins;
+            const coins = [];
+            for(let key in actions.coins) {
+                if(actions.coins.hasOwnProperty(key)) {
+                    coins.push(actions.coins[key]);
+                }
+            }
+            return [...coins, ...state];
         default:
             return state;
     }

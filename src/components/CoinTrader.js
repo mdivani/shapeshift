@@ -8,7 +8,7 @@ const CoinTrader = (props) => (
             <CoinSelector
               label='Return Address'
               direction='in'
-              coinName='BTC'
+              coinName="BTC"
              />
             <CoinSelector
               label='Withdrawal Address'
