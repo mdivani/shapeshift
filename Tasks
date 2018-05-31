@@ -2,15 +2,15 @@ TODO
 
 1. Prepare application:
 
-  1.1 install react/react-dom.
-  1.2 install redux/react-redux/redux-thunk.
-  1.3 install node-sass, sass-compiler.
+  1.1 install react/react-dom. +
+  1.2 install redux/react-redux/redux-thunk. +
+  1.3 install node-sass, sass-compiler. +
   1.4 install font-awesome for react.
-  1.5 install react-modal library.
-  1.6 install express.js
-  1.7 install webpack.
-  1.7 remove bower and angular reference files.
-  1.8 configure webpack.
+  1.5 install react-modal library. +
+  1.6 install express.js +
+  1.7 install webpack. +
+  1.7 remove bower and angular reference files. +
+  1.8 configure webpack. +
   //test and commit changes.
 
 2. App architecture: 

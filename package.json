@@ -4,11 +4,20 @@
   "description": "",
   "main": "dev-server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "webpack --mode development",
+    "dev-server": "webpack-dev-server --mode development"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-es2018": "^1.0.0",
     "express": "^4.16.3",
     "finalhandler": "~0.4.0",
     "http": "0.0.0",
@@ -22,6 +31,12 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^7.0.1",
     "serve-static": "~1.10.0",
-    "webpack": "^4.10.2"
+    "webpack": "^4.10.2",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "devDependencies": {
+    "babel-preset-stage-0": "^6.24.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "webpack-cli": "^2.1.4"
   }
 }
