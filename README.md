@@ -1,10 +1,9 @@
 # ShapeShift-Skeleton
 
 To Run: </br>
-  git clone https://github.com/Shapeshift-Public/ShapeShift-Skeleton </br>
-  cd ShapeShift-Skeleton </br>
+  git clone https://github.com/mdivani/shapeshift.git </br>
+  cd ShapeShift </br>
   npm install </br>
-  bower install </br>
-  node dev-server.js </br>
+  npm run dev-server //runs on localhost:8080</br>
+  node dev-server.js //runs on localhost:3000</br>
   
-  then go to localhost:3000 in browser
