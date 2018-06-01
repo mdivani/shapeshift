@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Modal from 'react-modal';
 import CoinBox from './CoinBox';
 import InputAddress from './InputAddress';
-import CoinList from '../components/CoinList';
 import CoinLimits from './CoinLimits';
+import ModalBox from './ModalBox';
 
 class CoinSelector extends React.Component {
     constructor(props) {
@@ -30,18 +29,15 @@ class CoinSelector extends React.Component {
 
     handleOpenModal = () => {
         this.setState((prev) => ({
-            openModal: !prev.openModal
+            openModal: true
         }));
-    }
-
-    handleRequestCloseFunc = () => {
-        this.setState({openModal: false});
     }
 
     handleSelectCoin = (coin) => {
         console.log('clicked!', coin.symbol);
         this.setState({
-            coinName: coin.symbol
+            coinName: coin.symbol,
+            openModal: false
         });
     }
 
@@ -54,17 +50,11 @@ class CoinSelector extends React.Component {
                             <CoinBox
                                 coin={this.state.coin}
                              />
-                            <Modal 
-                             isOpen={this.state.openModal}
-                             ariaHideApp={false}
-                             onRequestClose={this.handleRequestCloseFunc}
-                             shouldCloseOnOverlayClick={true}
-                             shouldCloseOnEsc={true}
-                            >
-                             <CoinList
-                             handleSelectCoin={this.handleSelectCoin} 
-                             />
-                            </Modal>
+                            <ModalBox 
+                                isOpen={this.state.openModal}
+                                ariaHideApp={false}
+                                handleSelectCoin={this.handleSelectCoin} 
+                            />
                         </div>
                     </div>
                     <div className="col-md-12">
@@ -89,7 +79,6 @@ class CoinSelector extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state.coins);
     return {
         coins: state.coins
     };

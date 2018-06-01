@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CoinBox from './CoinBox';
+import coinSelector from '../utilities/coinSelector';
 
 const CoinList = (props) => (
     <div className='coin-list'>
@@ -20,8 +21,8 @@ const CoinList = (props) => (
     </div>
 );
 
-const mapStateToProps = (state) => ({
-    coins: state.coins
+const mapStateToProps = (state, props) => ({
+    coins: coinSelector(state.coins, props.identifier)
 });
 
 export default connect(mapStateToProps)(CoinList);
