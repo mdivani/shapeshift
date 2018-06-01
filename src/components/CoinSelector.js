@@ -68,7 +68,10 @@ class CoinSelector extends React.Component {
                              label={this.props.label}
                              />
                             {
-                            this.props.direction === 'out' && <InputAddress className='form-control' type='text' label='amount' />
+                            this.props.direction === 'out' && <InputAddress 
+                                                                className='form-control' 
+                                                                type='text' 
+                                                                label={this.props.lang.amount} />
                             }
                         </div>
                         {
@@ -81,10 +84,10 @@ class CoinSelector extends React.Component {
     }
 };
 
-const mapStateToProps = (state) => {
-    return {
-        coins: state.coins
-    };
-}
+const mapStateToProps = (state) => ({
+    lang: state.language,
+    coins: state.coins
+})
+
 
 export default connect(mapStateToProps)(CoinSelector);

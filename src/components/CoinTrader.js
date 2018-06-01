@@ -22,24 +22,30 @@ class CoinTrader extends React.Component {
             <div className='container margin-top--medium'>
                 <div className='row'>
                     <CoinSelector
-                    label='Return Address'
+                    label={this.props.lang.returnAddress}
                     direction='in'
                     coinName={this.state.returnCoin}
                     />
                     <CoinSelector
-                    label='Withdrawal Address'
+                    label={this.props.lang.withdrawAddress}
                     direction='out'
                     coinName={this.state.withdrawCoin}
                     />
                 </div>
-                <ShiftButton />
+                <ShiftButton
+                  label={this.props.lang.continue}
+                />
             </div>
         );
     }
 } 
 
+const mapStateToProps = (state) => ({
+    lang: state.language
+})
+
 const mapDispatchToProps = (dispatch) => ({
     startSetLimits: (coin1, coin2) => dispatch(startSetLimits(coin1, coin2))
 });
 
-export default connect(undefined, mapDispatchToProps)(CoinTrader);
+export default connect(mapStateToProps, mapDispatchToProps)(CoinTrader);

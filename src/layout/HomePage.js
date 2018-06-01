@@ -2,7 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CoinTrader from '../components/CoinTrader';
 import { startSetTopCoins } from '../actions/topCoins';
+import { setLanguage } from '../actions/language';
 import TopCoinList from '../components/TopCoinList';
+import Header from '../components/Header';
 
 
 class HomePage extends React.Component {
@@ -17,7 +19,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <h1>Home Page</h1>
+                <Header />
                 <CoinTrader 
                 />
                 <TopCoinList />
@@ -31,7 +33,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startSetTopCoins: () => dispatch(startSetTopCoins())
+    startSetTopCoins: () => dispatch(startSetTopCoins()),
+    setLanguage: (option) => dispatch(setLanguage(option))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
