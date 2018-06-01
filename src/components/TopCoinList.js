@@ -7,6 +7,7 @@ const TopCoinList = (props) => (
         {
             props.topCoins.map((coin) => {
                 return <TopCoinBox
+                          key={coin.short}
                           symbol={coin.short}
                           price={coin.price}
                           percent={coin.perc}
