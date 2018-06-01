@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CoinBox = ({coin = { image: "", name: "", symbol: ""}}) => {
+const CoinBox = ({coin = { image: "", name: "", symbol: ""}, handleModalToggle}) => {
     return (
         <div 
-          //handle coin select
+          onClick={handleModalToggle}
           className='coin-box'>
             <img src={coin.image} className='coin-box__img' />
             <label className='coin-box__label'>{coin.name}</label>

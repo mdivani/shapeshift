@@ -4,6 +4,7 @@ import CoinBox from './CoinBox';
 import InputAddress from './InputAddress';
 import CoinLimits from './CoinLimits';
 import ModalBox from './ModalBox';
+import ModalContent from './ModalContent';
 
 class CoinSelector extends React.Component {
     constructor(props) {
@@ -16,7 +17,6 @@ class CoinSelector extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log(prevProps.coins.length)
         if(prevState.coinName !== this.state.coinName || prevProps.coins.length !== this.props.coins.length) 
         this.setState(() => ({
             coin: this.props.coins.filter((value) => {
@@ -27,14 +27,13 @@ class CoinSelector extends React.Component {
         }));          
     }
 
-    handleOpenModal = () => {
+    handleModalToggle = () => {
         this.setState((prev) => ({
-            openModal: true
+            openModal: !prev.openModal
         }));
     }
 
     handleSelectCoin = (coin) => {
-        console.log('clicked!', coin.symbol);
         this.setState({
             coinName: coin.symbol,
             openModal: false
@@ -46,15 +45,19 @@ class CoinSelector extends React.Component {
             <div className='col-md-5'>
                 <div className='row'>
                     <div className='col-md-12'>
-                        <div className='btn-group' onClick={this.handleOpenModal}>
+                        <div className='btn-group'>
                             <CoinBox
+                                handleModalToggle={this.handleModalToggle}
                                 coin={this.state.coin}
                              />
                             <ModalBox 
                                 isOpen={this.state.openModal}
                                 ariaHideApp={false}
-                                handleSelectCoin={this.handleSelectCoin} 
-                            />
+                            >
+                                <ModalContent
+                                    handleSelectCoin={this.handleSelectCoin} 
+                                />
+                            </ModalBox>
                         </div>
                     </div>
                     <div className="col-md-12">

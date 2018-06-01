@@ -1,15 +1,14 @@
 import React from 'react';
 import Modal from 'react-modal';
-import ModalContent from './ModalContent';
 
 const ModalBox = (props) => (
     <Modal 
         isOpen={props.isOpen}
         ariaHideApp={props.ariaHideApp}
+        closeTimeoutMS={200}
+        shouldCloseOnOverlayClick={true}
     >
-        <ModalContent
-            handleSelectCoin={props.handleSelectCoin} 
-        />
+        {props.children}
     </Modal>
 );
 
