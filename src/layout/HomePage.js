@@ -1,11 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CoinTrader from '../components/CoinTrader';
+import { startSetTopCoins } from '../actions/topCoins';
 
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        this.props.startSetTopCoins();
     }
 
     render() {
@@ -23,4 +28,8 @@ const mapStateToProps = (state) => ({
     coins: state.coins
 });
 
-export default connect(mapStateToProps)(HomePage);
+const mapDispatchToProps = (dispatch) => ({
+    startSetTopCoins: () => dispatch(startSetTopCoins())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
