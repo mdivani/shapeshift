@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CoinTrader from '../components/CoinTrader';
 import { startSetTopCoins } from '../actions/topCoins';
+import TopCoinList from '../components/TopCoinList';
 
 
 class HomePage extends React.Component {
@@ -19,6 +20,7 @@ class HomePage extends React.Component {
                 <h1>Home Page</h1>
                 <CoinTrader 
                 />
+                <TopCoinList />
             </div>
         );
     }
