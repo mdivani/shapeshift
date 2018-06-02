@@ -12,19 +12,21 @@ class CoinSelector extends React.Component {
         this.state = {
             coin: undefined,
             openModal: false,
-            coinName: this.props.coinName.toUpperCase() || 'BTC'
+            coinName: ''
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(prevState.coinName !== this.state.coinName || prevProps.coins.length !== this.props.coins.length) 
-        this.setState(() => ({
-            coin: this.props.coins.filter((value) => {
-                if(value.symbol === this.state.coinName) {
-                    return value;
-                }
-            })[0]
-        }));          
+        if(this.state.coinName !== this.props.coinName || prevProps.coins.length !== this.props.coins.length) 
+        this.setState(() => ({coinName: this.props.coinName}), () => {
+            this.setState(() => ({
+                coin: this.props.coins.filter((value) => {
+                    if(value.symbol === this.state.coinName) {
+                        return value;
+                    }
+                })[0]
+            }));
+        });          
     }
 
     handleModalToggle = () => {
@@ -34,8 +36,8 @@ class CoinSelector extends React.Component {
     }
 
     handleSelectCoin = (coin) => {
+        this.props.handleCoinSelection(coin.symbol, this.props.direction);
         this.setState({
-            coinName: coin.symbol,
             openModal: false
         });
     }

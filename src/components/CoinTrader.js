@@ -8,13 +8,53 @@ class CoinTrader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            returnCoin: 'btc',
-            withdrawCoin: 'eth'
+            returnCoin: '',
+            withdrawCoin: ''
         }
     }
 
     componentDidMount() {
-        this.props.startSetLimits(this.state.returnCoin, this.state.withdrawCoin);
+        this.setState(() => ({
+            returnCoin: localStorage.getItem('return') || 'BTC',
+            withdrawCoin: localStorage.getItem('withdraw') || 'ETH'
+        }), () => {
+            this.props.startSetLimits(this.state.returnCoin, this.state.withdrawCoin);
+        });
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.returnCoin !== this.state.returnCoin || prevState.withdrawCoin !== this.state.withdrawCoin) {
+            localStorage.setItem('return', this.state.returnCoin);
+            localStorage.setItem('withdraw', this.state.withdrawCoin);
+        }
+    }
+
+    handleCoinSelection = (symbol, direction) => {
+        if(direction === 'in') {
+            if(this.state.withdrawCoin !== symbol) {
+                this.setState({
+                    returnCoin: symbol
+                });
+            } else {
+                this.setState((prevState) => ({
+                    withdrawCoin: prevState.returnCoin
+                }), () => this.setState({returnCoin: symbol}));
+            }
+        } 
+        else if(direction === 'out') {
+            if(this.state.returnCoin !== symbol) {
+                this.setState({
+                    withdrawCoin: symbol
+                });
+            } else {
+                this.setState((prevState) => {
+                    return ({
+                    returnCoin: prevState.withdrawCoin
+                })}, () => {
+                    this.setState({withdrawCoin: symbol});
+                });
+            }
+        }
     }
     
     render() {
@@ -25,11 +65,13 @@ class CoinTrader extends React.Component {
                     label={this.props.lang.returnAddress}
                     direction='in'
                     coinName={this.state.returnCoin}
+                    handleCoinSelection={this.handleCoinSelection}
                     />
                     <CoinSelector
                     label={this.props.lang.withdrawAddress}
                     direction='out'
                     coinName={this.state.withdrawCoin}
+                    handleCoinSelection={this.handleCoinSelection}
                     />
                 </div>
                 <ShiftButton
