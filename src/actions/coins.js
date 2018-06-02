@@ -5,10 +5,13 @@ export const setCoins = (coins) => ({
     coins
 });
 
-export const startSetCoins = () => {
+export const startSetCoins = (cb) => {
     return (dispatch) => {
         SSAPI.GetCoins((coins) => {
-            dispatch(setCoins(coins));
+           const data = dispatch(setCoins(coins)).coins;
+           if(cb !== undefined) {
+            cb(data);
+           }
         });
     }
 }
