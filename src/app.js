@@ -4,13 +4,14 @@ import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 import HomePage from './layout/HomePage';
 import Loading from './components/Loading';
+import AppRouter from './appRouter/AppRouter';
 import {startSetCoins} from './actions/coins';
 
 const store = configureStore();
 let rendered = false;
 const jsx = (
     <Provider store={store}>
-        <HomePage />
+        <AppRouter />
     </Provider>
 );
 
