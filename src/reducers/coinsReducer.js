@@ -7,7 +7,7 @@ export default (state = [], actions) => {
                     coins.push(actions.coins[key]);
                 }
             }
-            return [...coins, ...state];
+            return [...coins];
         default:
             return state;
     }

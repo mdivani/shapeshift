@@ -7,18 +7,19 @@ class LanguageBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: 'jp'
+            defaultLanguage: localStorage.getItem('lang') || 'jp'
         }
     }
 
     componentDidMount() {
-        this.props.setLanguage(this.state.selectedOption);
+        this.props.setLanguage(this.state.defaultLanguage);
     }
 
     handleLanguageChange = (e) => {
         const option = e.target.value;
         if(option === 'en' || option === 'jp') {
             this.props.setLanguage(option);
+            localStorage.setItem('lang', option);
         }
     }
 
@@ -27,7 +28,7 @@ class LanguageBox extends React.Component {
             <div>
                 <DropDown
                   handleChange={this.handleLanguageChange}
-                  selectedOption={this.state.selectedOption}
+                  defaultLanguage={this.state.defaultLanguage}
                  />
             </div>
         )

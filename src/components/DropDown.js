@@ -5,10 +5,10 @@ const DropDown = (props) => (
         <select onChange={props.handleChange}>
             <option 
               value='en' 
-              selected={props.selectedOption === 'en'} >EN</option>
+              selected={props.defaultLanguage === 'en'} >EN</option>
             <option 
               value='jp'
-              selected={props.selectedOption === 'jp'} >JP</option>
+              selected={props.defaultLanguage === 'jp'} >JP</option>
         </select>
     </div>
 );
