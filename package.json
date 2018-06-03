@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "dev-server.js",
+  "homepage": "https://mdivani.github.io/shapeshift/",
   "scripts": {
     "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production",
+    "build": "webpack --mode production",
     "dev-server": "webpack-dev-server --mode development",
-    "start": "node server/dev-server.js"
+    "start": "node server/dev-server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +25,7 @@
     "babel-preset-react": "^6.24.1",
     "express": "^4.16.3",
     "finalhandler": "~0.4.0",
+    "gh-pages": "^1.2.0",
     "http": "0.0.0",
     "node-sass": "^4.9.0",
     "react": "^16.4.0",

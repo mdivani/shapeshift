@@ -11,6 +11,7 @@ const AppRouter = () => (
         <div>
             <Switch>
                 <Route path='/' component={HomePage} exact={true} />
+                <Route path='/shapeshift' component={HomePage} />
                 <Route component={NotFoundPage} />
             </Switch>
         </div>
