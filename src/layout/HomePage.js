@@ -13,7 +13,10 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        this.props.startSetTopCoins();
+        setInterval(() => {
+          this.props.startSetTopCoins();
+          console.log('top coins updated');
+        }, 10000)
     }
 
     render() {
