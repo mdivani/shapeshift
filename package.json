@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dev-server.js",
-  "homepage": "https://mdivani.github.io/shapeshift/",
+  "homepage": "https://mdivani.github.io/shapeshift",
   "scripts": {
     "build:dev": "webpack --mode development",
     "build": "webpack --mode production",

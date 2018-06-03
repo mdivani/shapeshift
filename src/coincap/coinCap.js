@@ -25,7 +25,7 @@ const AjaxRequest = (xmlhttp, cb) => {
         }
     };
 
-    const url='http://coincap.io/front';
+    const url='https://coincap.io/front';
 
     xmlhttp.open('GET',url, true);
     xmlhttp.send();
