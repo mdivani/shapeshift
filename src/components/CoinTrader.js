@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import CoinSelector from './CoinSelector';
 import ShiftButton from './ShiftButton';
 import { startSetLimits } from '../actions/limits';
+import CoinSubmitForm from './CoinSubmitForm';
 
 class CoinTrader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             returnCoin: '',
-            withdrawCoin: ''
+            withdrawCoin: '',
+            continue: false
         }
     }
 
@@ -56,6 +58,10 @@ class CoinTrader extends React.Component {
             }
         }
     }
+
+    handleContinueClick = () => {
+        this.setState({continue: true});
+    }
     
     render() {
         return (
@@ -74,9 +80,17 @@ class CoinTrader extends React.Component {
                     handleCoinSelection={this.handleCoinSelection}
                     />
                 </div>
-                <ShiftButton
-                  label={this.props.lang.continue}
-                />
+                <div className='row'>
+                    <ShiftButton
+                    label={this.props.lang.continue}
+                    onClickHandler={this.handleContinueClick}
+                    />
+                </div>
+                {
+                    this.state.continue && <CoinSubmitForm 
+                                            withdrawSymbol={this.state.withdrawCoin}
+                                            returnSymbol={this.state.returnCoin}/>
+                }
             </div>
         );
     }

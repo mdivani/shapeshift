@@ -28,9 +28,11 @@ export const startSetTopCoins = () => {
                     if(symbol === coin.short) {
                         return coin;
                     }
-                });
-                coins[i] = coin[0];
-                i++;
+                })[0];
+                if(coin) {
+                  coins[i] = coin;
+                  i++;
+                }
             });
             dispatch(setTopCoins(coins));
         });

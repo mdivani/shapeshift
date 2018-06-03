@@ -1,10 +1,12 @@
 import React from 'react';
 
 const ShiftButton = (props) => (
-    <div className="row">
-        <div className="col-md-12 text-center">
-            <button className="btn btn-primary" type="button" >{props.label}</button>
-        </div>
+    <div className="input-group">
+            <input 
+              defaultValue={props.label}
+              onClick={props.onClickHandler}
+              className="btn btn-primary" 
+              type={props.type || "button"} />
     </div>
 );
 

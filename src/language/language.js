@@ -4,14 +4,16 @@ const language = {
         "returnAddress": "return address",
         "withdrawAddress": "withdraw address",
         "amount": "amount",
-        "continue": "continue"
+        "continue": "continue",
+        "shiftButton": "shift"
     },
     "jp" : {
         "greeting": "jp",
         "returnAddress": "jp placeholder",
         "withdrawAddress": "jp placeholder",
         "amount": "jp amount",
-        "continue": "jp continue"
+        "continue": "jp continue",
+        "shiftButton": "JP shift"
     }
 }
 

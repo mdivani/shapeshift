@@ -1,9 +1,11 @@
-import SSAPI from '../shapeshift/shapeshift';
+//check if empty string
+export const validateInput = (value1, value2) => {
+    return !!value1 && !!value2;
+}
 
-export const validateCoinAddres = (address, symbol) => {
-    let response = {};
-    SSAPI.ValidateAdddress(address, symbol, (data) => {
-        response = data;
-    });
-    return response;
+export const validateAmount = (amount, max, min) => {
+    if(isNaN(amount) || !amount) return false;
+    if(isNaN(max) || !max) return false;
+    if(isNaN(min) || !min) return false;
+    return amount <= max && amount >= min;
 }

@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CoinBox from './CoinBox';
-import InputAddress from './InputAddress';
-import CoinLimits from './CoinLimits';
 import ModalBox from './ModalBox';
 import ModalContent from './ModalContent';
 
@@ -61,24 +59,6 @@ class CoinSelector extends React.Component {
                                 />
                             </ModalBox>
                         </div>
-                    </div>
-                    <div className="col-md-12">
-                        <div className="form-group">
-                            <InputAddress 
-                             className='form-control'
-                             type='text'
-                             label={this.props.label}
-                             />
-                            {
-                            this.props.direction === 'out' && <InputAddress 
-                                                                className='form-control' 
-                                                                type='text' 
-                                                                label={this.props.lang.amount} />
-                            }
-                        </div>
-                        {
-                        this.props.direction === 'in' && <CoinLimits  />
-                        }
                     </div>
                 </div>
             </div>

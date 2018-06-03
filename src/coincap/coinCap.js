@@ -1,17 +1,5 @@
-const topCoins = [
-    'BTC',
-    'ETH',
-    'XRP',
-    'BCH',
-    'LTC',
-    'XMR',
-    'DASH',
-    'ETC',
-    'QTUM',
-    'OMG'
-];
 
-var JP = JSON.parse;
+const JP = JSON.parse;
 
 const CreateXmlHttp = () => {
     let xmlhttp;
