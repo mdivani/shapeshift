@@ -6,4 +6,6 @@ To Run: </br>
   npm install </br>
   npm run dev-server //runs on localhost:8080</br>
   node dev-server.js //runs on localhost:3000</br>
+
+  live version deployed on https://mdivani.github.io/shapeshift/
   
