@@ -5,7 +5,7 @@ const CoinBox = ({coin = { image: "", name: "", symbol: ""}, direction, handleMo
         <div 
           onClick={handleModalToggle}
           className='coin-box'>
-            {direction && <p className='coin-box__label'> {direction === 'in' ? 'deposit' : 'receive' } </p>}
+            {direction && <p className='coin-box__label'> {direction === 'in' ? 'deposit' : 'recieve' } </p>}
             <img src={`https://shapeshift.io${coin.image}`} className='coin-box__image' />
             <label className='coin-box__label'>{coin.name}</label>
         </div>
