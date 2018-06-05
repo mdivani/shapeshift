@@ -5,7 +5,7 @@ const ShiftButton = (props) => (
             <input 
               defaultValue={props.label}
               onClick={props.onClickHandler}
-              className="btn btn-primary" 
+              className="btn btn--primary margin-top--small" 
               type={props.type || "button"} />
     </div>
 );
