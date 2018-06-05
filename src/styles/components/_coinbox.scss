@@ -1,0 +1,20 @@
+.coin-box {
+    background-color: $color-white;
+    display: inline-block;
+    cursor: pointer;
+    color: $font-color-primary;
+    padding: $s-size;
+    text-align: center;
+    width: 150px;
+    &__image {
+        display: inline-block;
+        width: 80%;
+    }
+    &__label {
+        font-weight: 600;
+    }
+    &:hover,
+    &:active {
+        opacity: .6;
+    }
+}

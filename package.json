@@ -23,11 +23,13 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2018": "^1.0.0",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
     "express": "^4.16.3",
     "finalhandler": "~0.4.0",
     "gh-pages": "^1.2.0",
     "http": "0.0.0",
     "node-sass": "^4.9.0",
+    "normalize-css": "^2.3.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-modal": "^3.4.4",
@@ -38,12 +40,14 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^7.0.1",
     "serve-static": "~1.10.0",
+    "source-map": "^0.7.3",
     "webpack": "^4.10.2",
     "webpack-dev-server": "^3.1.4"
   },
   "devDependencies": {
     "babel-preset-stage-0": "^6.24.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "inline-source-map": "^0.6.2",
     "webpack-cli": "^2.1.4"
   }
 }

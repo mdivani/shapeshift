@@ -6,6 +6,8 @@ import HomePage from './layout/HomePage';
 import Loading from './components/Loading';
 import AppRouter from './appRouter/AppRouter';
 import {startSetCoins} from './actions/coins';
+import 'normalize-css/normalize';
+import './styles/styles.scss';
 
 const store = configureStore();
 let rendered = false;
