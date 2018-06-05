@@ -42,24 +42,21 @@ class CoinSelector extends React.Component {
 
     render() {
         return (
-            <div className='col-md-5'>
-                <div className='row'>
-                    <div className='col-md-12'>
-                        <div className='btn-group'>
-                            <CoinBox
-                                handleModalToggle={this.handleModalToggle}
-                                coin={this.state.coin}
-                             />
-                            <ModalBox 
-                                isOpen={this.state.openModal}
-                                ariaHideApp={false}
-                            >
-                                <ModalContent
-                                    handleSelectCoin={this.handleSelectCoin} 
-                                />
-                            </ModalBox>
-                        </div>
-                    </div>
+            <div className='col-2-of-5'>
+                <div className='btn-group'>
+                    <CoinBox
+                        direction={this.props.direction}
+                        handleModalToggle={this.handleModalToggle}
+                        coin={this.state.coin}
+                        />
+                    <ModalBox 
+                        isOpen={this.state.openModal}
+                        ariaHideApp={false}
+                    >
+                        <ModalContent
+                            handleSelectCoin={this.handleSelectCoin} 
+                        />
+                    </ModalBox>
                 </div>
             </div>
         )

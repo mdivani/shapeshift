@@ -1,8 +1,10 @@
 .coin-box {
-    background-color: $color-white;
-    display: inline-block;
+    background-color: $color-secondary;
+    display: block;
     cursor: pointer;
-    color: $font-color-primary;
+    color: $color-primary;
+    margin: auto;
+    height: 200px;
     padding: $s-size;
     text-align: center;
     width: 150px;
@@ -11,7 +13,10 @@
         width: 80%;
     }
     &__label {
-        font-weight: 600;
+        text-transform: capitalize;
+        font-size: $m-size;
+        font-weight: 500;
+        opacity: .9;
     }
     &:hover,
     &:active {

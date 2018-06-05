@@ -4,6 +4,7 @@ import CoinSelector from './CoinSelector';
 import ShiftButton from './ShiftButton';
 import { startSetLimits } from '../actions/limits';
 import CoinSubmitForm from './CoinSubmitForm';
+import SwitchArrow from './SwitchArrow';
 
 class CoinTrader extends React.Component {
     constructor(props) {
@@ -65,7 +66,8 @@ class CoinTrader extends React.Component {
     
     render() {
         return (
-            <div className='container margin-top--medium'>
+            <div className='trader-box'>
+                <h2 className='trader-box__title'>choose which coins to trade</h2>
                 <div className='row'>
                     <CoinSelector
                     label={this.props.lang.returnAddress}
@@ -73,6 +75,7 @@ class CoinTrader extends React.Component {
                     coinName={this.state.returnCoin}
                     handleCoinSelection={this.handleCoinSelection}
                     />
+                    <SwitchArrow />
                     <CoinSelector
                     label={this.props.lang.withdrawAddress}
                     direction='out'

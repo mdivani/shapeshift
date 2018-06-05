@@ -1,0 +1,16 @@
+.icon {
+    text-align: center;
+    &__exchange {
+        color: $color-primary;
+        cursor: pointer;
+        font-size: $icon-size-small;
+        margin-top: 80px;
+        opacity: .4;
+        transition: all .3s;
+
+        &:hover,
+        &:active {
+            opacity: .6;
+        }
+    }
+}
