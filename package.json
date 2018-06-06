@@ -9,7 +9,7 @@
     "build": "webpack --mode production",
     "dev-server": "webpack-dev-server --mode development",
     "start": "node server/dev-server.js",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:dev",
     "deploy": "gh-pages -d public"
   },
   "author": "",
