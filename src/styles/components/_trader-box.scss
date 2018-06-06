@@ -38,13 +38,13 @@
     }
 
     &__rate {
-        display: inline-block;
-        height: 100%;
+        display: inline;
         padding-top: $xs-size;
         margin: 0;
         position: absolute;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+        white-space: nowrap;
     }
 }

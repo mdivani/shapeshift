@@ -14,7 +14,9 @@ const CoinSubmitContainer = (props) => (
                 <span className='text-secondary'>{` 1 ${props.returnSymbol} = ${props.limits.rate} ${props.withdrawSymbol}`}</span>
             </div>
             <CoinLimits 
-                 limits={props.limits}
+                depositSymbol={props.returnSymbol}
+                withdrawSymbol={props.withdrawSymbol}
+                limits={props.limits}
             />
         </div>
         <div className='trader-box__form'>
