@@ -1,6 +1,4 @@
 import React from 'react';
-import FontAwesome from '@fortawesome/react-fontawesome';
-
 
 const SwitchArrow = (props) => (
     <div className='col-1-of-5'>
