@@ -3,12 +3,48 @@
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(45,45,45, .2);
     margin: auto;
-    width: 50rem;
+    width: 60rem;
     padding: $l-size;
+    position: relative;
+
     &__title {
         color: $color-primary;
         text-align: center;
         text-transform: capitalize;
         margin-top: $m-size;
+    }
+
+    &__content {
+        display: none;
+        animation: fadeOut .5s ease;
+
+        &--active {
+            display: block;
+        }
+    }
+
+    &__form {
+        margin-top: 2* $gutter-vertical-large;
+    }
+
+    &__header {
+        background-color: $color-blue-dark;
+        border-radius: 5px 5px 0 0;
+        position: absolute;
+        padding-top: $xs-size;
+        top: 0;
+        left:0;
+        right: 0;
+    }
+
+    &__rate {
+        display: inline-block;
+        height: 100%;
+        padding-top: $xs-size;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

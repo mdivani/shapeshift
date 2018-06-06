@@ -1,0 +1,10 @@
+.text-primary {
+    color: lighten($color-primary, 15%);
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.text-secondary {
+    color: $color-secondary;
+    text-transform: uppercase;
+}

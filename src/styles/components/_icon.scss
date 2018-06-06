@@ -1,5 +1,6 @@
 .icon {
     text-align: center;
+
     &__exchange {
         color: $color-primary;
         cursor: pointer;
@@ -7,10 +8,27 @@
         margin-top: 80px;
         opacity: .4;
         transition: all .3s;
+        text-align: center;
 
         &:hover,
         &:active {
             opacity: .6;
         }
     }
+
+    &__arr-back {
+        display: inline-block;
+        color: $color-secondary;
+        font-size: $l-size;
+        margin-left: $xs-size;
+
+        &:hover {
+            cursor: pointer;
+            color: darken($color-secondary, 10%);
+        }
+    }
+}
+
+.icon-secondary {
+    display: inline;
 }

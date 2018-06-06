@@ -79,9 +79,6 @@ class CoinsSubmitForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleFormSubmit}>
-                <CoinLimits 
-                 limits={this.props.limits}
-                 />
                 {this.state.validating && <h3>validating...</h3>}
                 <div className="col-md-12">
                     <div className="form-group">
