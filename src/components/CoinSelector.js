@@ -42,7 +42,6 @@ class CoinSelector extends React.Component {
 
     render() {
         return (
-            <div className='col-2-of-5'>
                 <div className='btn-group'>
                     <CoinBox
                         direction={this.props.direction}
@@ -58,7 +57,6 @@ class CoinSelector extends React.Component {
                         />
                     </ModalBox>
                 </div>
-            </div>
         )
     }
 };

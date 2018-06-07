@@ -1,3 +1,10 @@
 .margin-top--small {
     margin-top: $s-size;
 }
+
+.no-gutter {
+    &:not(:last-child) {
+        border-right: .5px solid gray;
+        box-shadow: -1px 0 6px rgba(0,0,0, .15), inset 1px 0 6px rgba(0,0,0, .15);
+    }
+}

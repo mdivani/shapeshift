@@ -1,0 +1,9 @@
+.coin-list {
+    width: 100%;
+    @include clearfix;
+    
+    &__box {
+        float: left;
+        margin: $xs-size;
+    }
+}

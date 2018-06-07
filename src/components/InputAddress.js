@@ -2,7 +2,7 @@ import React from 'react';
 
 const InputAddress = (props) => {
     return (
-        <div className='input-group'>
+        <div className='input'>
         <input 
             type={props.type}
             className={props.className}
@@ -10,7 +10,7 @@ const InputAddress = (props) => {
             value={props.value}
             onChange={props.onValueChangeHandler}
             />
-        <label className='input-group__label'>{props.label}</label>
+        <label className='input__label'>{props.label}</label>
         </div>
     );
 };

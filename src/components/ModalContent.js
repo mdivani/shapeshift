@@ -17,8 +17,9 @@ export default class ModalContent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='container__list'>
                 <InputAddress 
+                  className={'input__text'}
                   value={this.state.identifier}
                   onValueChangeHandler={this.handleIdentifierChange}
                   label='quick search'

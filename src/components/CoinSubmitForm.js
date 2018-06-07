@@ -78,37 +78,43 @@ class CoinsSubmitForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
+            <form className='form' onSubmit={this.handleFormSubmit}>
                 {this.state.validating && <h3>validating...</h3>}
-                <div className="col-md-12">
-                    <div className="form-group">
-                        <InputAddress 
-                            className='form-control'
-                            type='text'
-                            label={this.props.lang.returnAddress}
-                            value={this.state.returnAddress}
-                            isvalid={this.state.returnIsValid}
-                            onValueChangeHandler={this.handleReturnChange}
-                            />
-                        <InputAddress 
-                            className='form-control'
-                            type='text'
-                            label={this.props.lang.withdrawAddress}
-                            value={this.state.withdrawAddress}
-                            isvalid={this.state.withdrawIsValid}
-                            onValueChangeHandler={this.handleWithdrawChange}
-                            />
-                        <InputAddress 
-                            className='form-control'
-                            type='text'
-                            label={this.props.lang.amount}
-                            value={this.state.value}
-                            isvalid={this.state.amountIsValid}
-                            onValueChangeHandler={this.handleAmountChange}
-                            />
+                <div className="form__group">
+                    <div className="row">
+                        <div className='col-1-of-2'>
+                            <InputAddress 
+                                className='input__text'
+                                type='text'
+                                label={this.props.lang.returnAddress}
+                                value={this.state.returnAddress}
+                                isvalid={this.state.returnIsValid}
+                                onValueChangeHandler={this.handleReturnChange}
+                                />
+                        </div>
+                        <div className='col-1-of-2'>
+                            <InputAddress 
+                                className='input__text'
+                                type='text'
+                                label={this.props.lang.withdrawAddress}
+                                value={this.state.withdrawAddress}
+                                isvalid={this.state.withdrawIsValid}
+                                onValueChangeHandler={this.handleWithdrawChange}
+                                />
+                            <InputAddress 
+                                className='input__text'
+                                type='text'
+                                label={this.props.lang.amount}
+                                value={this.state.value}
+                                isvalid={this.state.amountIsValid}
+                                onValueChangeHandler={this.handleAmountChange}
+                                />
+                        </div>
+                    </div>
+                    <div className='row'>
                         <ShiftButton 
-                            label={this.props.lang.shiftButton}
-                            type='submit'
+                        label={this.props.lang.shiftButton}
+                        type='submit'
                         />
                     </div>
                 </div>

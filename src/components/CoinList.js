@@ -9,12 +9,12 @@ const CoinList = (props) => (
             props.coins && props.coins.map((coin) => {
                 if(coin.status === 'available') {
                     return <div key={coin.symbol} 
-                             onClick={() => props.handleSelectCoin(coin)}
-                             className='coin-list__box'>
+                            onClick={() => props.handleSelectCoin(coin)}
+                            className='coin-list__box'>
                                 <CoinBox 
                                 coin={coin}
                                 />
-                           </div>
+                        </div>
                 }
             })
         }

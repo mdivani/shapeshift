@@ -5,6 +5,8 @@ import { startSetTopCoins } from '../actions/topCoins';
 import { setLanguage } from '../actions/language';
 import TopCoinList from '../components/TopCoinList';
 import Header from '../components/Header';
+import ModalContent from '../components/ModalContent';
+import CoinLimits from '../components/CoinLimits';
 
 
 class HomePage extends React.Component {
@@ -19,20 +21,39 @@ class HomePage extends React.Component {
         }, 10000)
     }
 
+    handleSelectCoin = (coin) => {
+            //TODO: 
+            //implement coins selection from here
+        console.log('selected', coin);
+    }
+
     render() {
         return (
-            <div>
-                <Header />
-                <CoinTrader 
-                />
-                <TopCoinList />
+            <div className='container'>
+              <Header />
+              <div className='row'>
+                    <div className='col-1-of-2'>
+                        <CoinLimits 
+                        depositSymbol='BTC'
+                        withdrawSymbol='ETH'
+                        limits={this.props.limits}
+                        />
+                        <CoinTrader />
+                    </div>
+                    <div className='col-1-of-2'>
+                        <ModalContent
+                            handleSelectCoin={this.handleSelectCoin}
+                         />
+                    </div>
+              </div>
             </div>
         );
     }
 } 
 
 const mapStateToProps = (state) => ({
-    coins: state.coins
+    coins: state.coins,
+    limits: state.limits
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -75,33 +75,28 @@ class CoinTrader extends React.Component {
     render() {
         return (
             <div className='trader-box'>
-                <div className={!this.state.continue ? 'trader-box__content trader-box__content--active' : 'trader-box__content'}>
+                <div className={'trader-box__content trader-box__content--active'}>
                     <h2 className='trader-box__title'>choose which coins to trade</h2>
                     <div className='row'>
+                        <div className='col-1-of-2'>
                         <CoinSelector
                         label={this.props.lang.returnAddress}
                         direction='in'
                         coinName={this.state.returnCoin}
                         handleCoinSelection={this.handleCoinSelection}
                         />
-                        <SwitchArrow 
-                         handleSwitchClick={this.handleSwitchClick}
-                        />
+                        </div>
+                        <div className='col-1-of-2'>
                         <CoinSelector
                         label={this.props.lang.withdrawAddress}
                         direction='out'
                         coinName={this.state.withdrawCoin}
                         handleCoinSelection={this.handleCoinSelection}
                         />
-                    </div>
-                    <div className='row'>
-                        <ShiftButton
-                        label={this.props.lang.continue}
-                        onClickHandler={this.handleContinueClick}
-                        />
+                        </div>
                     </div>
                 </div> 
-                <div className={this.state.continue ? 'trader-box__content trader-box__content--active' : 'trader-box__content'}>
+                <div className='row'>
                     <CoinSubmitContainer 
                         handleBackClick={this.handleContinueClick}
                         withdrawSymbol={this.state.withdrawCoin}
