@@ -15,5 +15,7 @@
 
     &__label {
         margin-left: $s-size;
+        opacity: 0;
+        visibility: hidden;
     }
 }
