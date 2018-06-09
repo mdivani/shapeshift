@@ -6,7 +6,7 @@ const TopCoinBox = (props) => (
         <li><label className='coin-info__item'>{props.price} USD </label></li>
         <li>
             <label className={`coin-info__item ${props.percent > 0 ? 'coin-info__item--positive' : 'coin-info__item--negative'}`}>
-              {props.percent}
+              {props.percent}%
             </label>
         </li>
     </ul>
