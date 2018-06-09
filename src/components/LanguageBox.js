@@ -15,11 +15,12 @@ class LanguageBox extends React.Component {
         this.props.setLanguage(this.state.defaultLanguage);
     }
 
-    handleLanguageChange = (e) => {
-        const option = e.target.value;
+    handleLanguageChange = (option) => {
         if(option === 'en' || option === 'jp') {
-            this.props.setLanguage(option);
-            localStorage.setItem('lang', option);
+            this.setState(() => ({defaultLanguage: option}), () => {
+                this.props.setLanguage(option);
+                localStorage.setItem('lang', option);
+            })
         }
     }
 
