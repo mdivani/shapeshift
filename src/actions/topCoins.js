@@ -18,23 +18,14 @@ export const setTopCoins = (coins) => ({
     coins
 });
 
-export const startSetTopCoins = () => {
+export const startSetTopCoins = (cb) => {
     return (dispatch) => {
         getCoinData((data) => {
-            const coins = [];
-            let i = 0;
-            topCoins.forEach((symbol) => {
-                const coin = data.filter((coin) => {
-                    if(symbol === coin.short) {
-                        return coin;
-                    }
-                })[0];
-                if(coin) {
-                  coins[i] = coin;
-                  i++;
-                }
-            });
-            dispatch(setTopCoins(coins));
+            const topCoins = data.filter((coin) => coin.shapeshift === true);
+            dispatch(setTopCoins(topCoins));
+            if(cb !== undefined) {
+                cb(topCoins);
+            }
         });
     }
 };

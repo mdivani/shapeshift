@@ -9,6 +9,7 @@ const InputAddress = (props) => {
             placeholder={props.label}
             value={props.value}
             onChange={props.onValueChangeHandler}
+            autoFocus={props.focused}
             />
         <label className='input__label'>{props.label}</label>
         </div>

@@ -6,6 +6,7 @@ import HomePage from './layout/HomePage';
 import Loading from './components/Loading';
 import AppRouter from './appRouter/AppRouter';
 import {startSetCoins} from './actions/coins';
+import {startSetTopCoins} from './actions/topCoins';
 import 'normalize-css/normalize';
 import './styles/styles.scss';
 
@@ -19,7 +20,12 @@ const jsx = (
 
 ReactDOM.render(<Loading />, document.getElementById('root'));
 
-store.dispatch(startSetCoins());
+store.dispatch(startSetCoins(() => {
+    store.dispatch(startSetTopCoins((response) => {
+        ReactDOM.render(jsx, document.getElementById('root'));
+        rendered = true;
+    }));
+}));
 
 store.subscribe(() => {
     if(!rendered) {

@@ -1,15 +1,42 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import TopCoinBox from './TopCoinBox';
 
-const CoinBox = ({coin = { image: "", name: "", symbol: ""}, direction, handleModalToggle}) => {
+const CoinBox = ({coin = { image: "", name: "", symbol: ""}, 
+                 topCoins = [],
+                 direction, 
+                 handleModalToggle, 
+                 isSelected}) => {
+    
     return (
         <div 
           onClick={handleModalToggle}
-          className='coin-box'>
+          className={`coin-box ${!direction && 'coin-box--small'} ${isSelected && 'coin-box--active'}`}>
             {direction && <p className='coin-box__label'> {direction === 'in' ? 'deposit' : 'recieve' } </p>}
-            <img src={`${coin.image}`} className='coin-box__image' />
-            <label className='coin-box__label'>{coin.name}</label>
+            <img 
+                src={`${coin.image}`} 
+                className={direction ? 'coin-box__image' : 'coin-box__image--small'} />
+            {
+                direction ? 
+                <label className='coin-box__label'>{coin.name }</label> 
+                : topCoins.length > 0 && topCoins.map((topCoin) => {
+                    if(topCoin.short === coin.symbol) {
+                        return <TopCoinBox
+                                    key={topCoin.short}
+                                    symbol={topCoin.short}
+                                    price={topCoin.price}
+                                    percent={topCoin.perc}
+                                />
+                    }
+                })
+            }
         </div>
     )
 }
 
-export default CoinBox;
+const mapStateToProps = (state) => ({
+    coins: state.coins,
+    topCoins: state.topCoins
+});
+
+export default connect(mapStateToProps)(CoinBox);

@@ -1,0 +1,21 @@
+.coin-info {
+    list-style-type: none;
+    padding: 0;
+
+    &__item {
+        color: $color-btn-primary;
+        font-weight: 600;
+
+        &--positive {
+            color: green;
+        }
+        &--negative {
+            color: red;
+        }
+    }
+
+    li {
+        text-align: center;
+        padding: 3px;
+    }
+}

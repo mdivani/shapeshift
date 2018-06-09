@@ -23,6 +23,7 @@ export default class ModalContent extends React.Component {
                   value={this.state.identifier}
                   onValueChangeHandler={this.handleIdentifierChange}
                   label='quick search'
+                  focused={true}
                 />
                 <CoinList 
                  identifier={this.state.identifier}

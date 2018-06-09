@@ -1,9 +1,10 @@
 .header {
     background-color: $color-blue-dark;
-    padding: $m-size;
+    padding: $xs-size;
 
     &__left {
-        padding-top: $s-size;
+        border: 1px solid transparent;
+        padding: 0;
         position: relative;
         width: 100%;
     }
@@ -19,7 +20,7 @@
     }
 
     &__lang {
-        margin-left: auto;
+        margin: 0 auto;
         margin-right: $m-size;
         width: 50px;
     }

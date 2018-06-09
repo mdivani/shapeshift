@@ -1,21 +1,32 @@
 .input {
-    margin: $s-size 0;
+    margin: $xs-size 0;
     &__text {
-        border: none;
-        box-shadow: 1px 1px 3px rgba(0,0,0, .2);
+        border: 1px solid rgba($color-primary, .5);
         border-radius: 3px;
         padding: $s-size;
         width: 100%;
+        font-family: 'Open Sans', sans-serif;
 
         &:focus {
             outline: none;
             box-shadow: 2px 2px 6px rgba(0,0,0, .2), -2px -2px 6px rgba(0,0,0, .2);
         }
+        &::placeholder {
+            text-transform: capitalize;
+            font-weight: 500;
+        }
     }
 
     &__label {
+        color: $color-primary;
         margin-left: $s-size;
+        text-transform: capitalize;
+        transition: all .5s ease;
+    }
+
+    &__text:placeholder-shown + &__label {
         opacity: 0;
         visibility: hidden;
+        transform: translateY(4rem);
     }
 }

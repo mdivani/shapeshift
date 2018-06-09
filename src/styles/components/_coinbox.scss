@@ -1,18 +1,22 @@
 .coin-box {
-    background-color: $color-secondary;
+    background-color: darken($color-secondary, 2%);
     display: block;
     cursor: pointer;
     color: $color-primary;
-    margin: auto;
-    height: 200px;
-    padding: $s-size;
+    margin: $xs-size auto;
+    padding: $xs-size;
     text-align: center;
-    width: 150px;
+    width: $box-width;
     &__image {
-        display: inline-block;
+        display: block;
+        margin: auto;
         width: 80%;
+        &--small {
+            width: $icon-size-large;
+        }
     }
     &__label {
+        margin-top: 0;
         text-transform: capitalize;
         font-size: $m-size;
         font-weight: 500;
@@ -20,6 +24,13 @@
     }
     &:hover,
     &:active {
-        opacity: .6;
+        box-shadow: 0 3px 6px rgba(0,0,0, .15);
+    }
+    &--active {
+        box-shadow: 0 3px 6px rgba(0,0,0, .15);
+        border-bottom: 2px solid orange; 
+    }
+    &--small {
+        height: $box-width;
     }
 }

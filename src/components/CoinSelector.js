@@ -1,16 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CoinBox from './CoinBox';
-import ModalBox from './ModalBox';
-import ModalContent from './ModalContent';
 
 class CoinSelector extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             coin: undefined,
-            openModal: false,
-            coinName: ''
+            coinName: '',
         }
     }
 
@@ -27,35 +24,21 @@ class CoinSelector extends React.Component {
         });          
     }
 
-    handleModalToggle = () => {
-        this.setState((prev) => ({
-            openModal: !prev.openModal
-        }));
-    }
-
-    handleSelectCoin = (coin) => {
-        this.props.handleCoinSelection(coin.symbol, this.props.direction);
-        this.setState({
-            openModal: false
-        });
+    handleBoxClick = () => {
+        const isDeposit = this.props.direction === 'in';
+        this.props.handleSelectedDirection(isDeposit);
     }
 
     render() {
         return (
-                <div className='btn-group'>
+                <div 
+                  onClick={this.handleBoxClick} 
+                >
                     <CoinBox
+                        isSelected={this.props.isSelected}
                         direction={this.props.direction}
-                        handleModalToggle={this.handleModalToggle}
                         coin={this.state.coin}
                         />
-                    <ModalBox 
-                        isOpen={this.state.openModal}
-                        ariaHideApp={false}
-                    >
-                        <ModalContent
-                            handleSelectCoin={this.handleSelectCoin} 
-                        />
-                    </ModalBox>
                 </div>
         )
     }

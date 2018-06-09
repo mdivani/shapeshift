@@ -1,14 +1,14 @@
 .trader-box {
     margin: auto;
     width: 100%;
-    padding: $l-size;
+    padding: $s-size;
     position: relative;
 
     &__title {
         color: $color-primary;
         text-align: center;
         text-transform: capitalize;
-        margin-top: $m-size;
+        margin-top: $xs-size;
     }
 
     &__content {
@@ -18,10 +18,6 @@
         &--active {
             display: block;
         }
-    }
-
-    &__form {
-        margin-top: 2* $gutter-vertical-large;
     }
 
     &__header {
@@ -34,14 +30,4 @@
         right: 0;
     }
 
-    &__rate {
-        display: inline;
-        padding-top: $xs-size;
-        margin: 0;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        white-space: nowrap;
-    }
 }
