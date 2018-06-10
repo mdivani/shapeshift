@@ -31,13 +31,13 @@ class CoinSelector extends React.Component {
 
     render() {
         return (
-                <div 
-                  onClick={this.handleBoxClick} 
+                <div  
                 >
                     <CoinBox
                         isSelected={this.props.isSelected}
                         direction={this.props.direction}
                         coin={this.state.coin}
+                        handleBoxClick={this.handleBoxClick}
                         />
                 </div>
         )

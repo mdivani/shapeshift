@@ -9,7 +9,7 @@
 
         &:focus {
             outline: none;
-            box-shadow: 2px 2px 6px rgba(0,0,0, .2), -2px -2px 6px rgba(0,0,0, .2);
+            box-shadow: 0 2px 4px rgba($color-highlight, .15), 0px -2px 4px rgba($color-highlight, .15);
         }
         &::placeholder {
             text-transform: capitalize;
@@ -19,6 +19,8 @@
 
     &__label {
         color: $color-primary;
+        font-size: $s-size;
+        font-weight: 400;
         margin-left: $s-size;
         text-transform: capitalize;
         transition: all .5s ease;

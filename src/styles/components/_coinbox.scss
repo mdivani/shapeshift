@@ -28,7 +28,7 @@
     }
     &--active {
         box-shadow: 0 3px 6px rgba(0,0,0, .15);
-        border-bottom: 2px solid orange; 
+        border-bottom: 2px solid $color-highlight; 
     }
     &--small {
         height: $box-width;

@@ -5,12 +5,12 @@ import TopCoinBox from './TopCoinBox';
 const CoinBox = ({coin = { image: "", name: "", symbol: ""}, 
                  topCoins = [],
                  direction, 
-                 handleModalToggle, 
+                 handleBoxClick, 
                  isSelected}) => {
     
     return (
         <div 
-          onClick={handleModalToggle}
+          onClick={handleBoxClick}
           className={`coin-box ${!direction && 'coin-box--small'} ${isSelected && 'coin-box--active'}`}>
             {direction && <p className='coin-box__label'> {direction === 'in' ? 'deposit' : 'recieve' } </p>}
             <img 

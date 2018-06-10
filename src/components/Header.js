@@ -17,8 +17,8 @@ const Header = (props) => (
             <div className='row'>
                 <div className='header__left'>
                     <div className='header__rate'>
-                        <span className='text-primary'>
-                            please select <span className='text-tertiary'>{props.isDepositSelected ? 'deposit' : 'withdraw'}</span> coin
+                        <span className='text-tertiary'>
+                            please select <span className='text-tertiary__highlight'>{props.isDepositSelected ? 'deposit' : 'withdraw'}</span> coin
                         </span>
                     </div>
                     <Navigation />

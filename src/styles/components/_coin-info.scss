@@ -7,10 +7,10 @@
         font-weight: 600;
 
         &--positive {
-            color: green;
+            color: $color-success;
         }
         &--negative {
-            color: red;
+            color: $color-warning;
         }
     }
 
