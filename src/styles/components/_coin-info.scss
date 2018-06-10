@@ -14,6 +14,20 @@
         }
     }
 
+    &__title {
+        color: $color-btn-primary;
+        font-size: $m-size;
+        font-weight: 600;
+        margin: 0 auto;
+        text-transform: capitalize;
+
+        &--sub {
+            color: lighten($color-success, 10%);
+            font-size: $s-size * 1.4;
+            margin-top: $xs-size;
+        }
+    }
+
     li {
         text-align: center;
         padding: 3px;

@@ -8,6 +8,13 @@ export default (state = [], actions) => {
                 }
             }
             return [...coins];
+        case 'ADD_MARKET_CAP':
+            return state.map((coin) => {
+                if(coin.symbol === actions.symbol) {
+                    coin.cap = actions.cap;
+                }
+                return coin;
+            });
         default:
             return state;
     }

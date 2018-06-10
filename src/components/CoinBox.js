@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TopCoinBox from './TopCoinBox';
 
-const CoinBox = ({coin = { image: "", name: "", symbol: ""}, 
+const CoinBox = ({coin = { image: "", name: "", symbol: "", cap: 0}, 
                  topCoins = [],
                  direction, 
                  handleBoxClick, 
@@ -26,6 +26,7 @@ const CoinBox = ({coin = { image: "", name: "", symbol: ""},
                                     symbol={topCoin.short}
                                     price={topCoin.price}
                                     percent={topCoin.perc}
+                                    cap={coin.cap}
                                 />
                     }
                 })

@@ -10,7 +10,7 @@
     &__image {
         display: block;
         margin: auto;
-        width: 80%;
+        width: 60%;
         &--small {
             width: $icon-size-large;
         }
@@ -31,6 +31,6 @@
         border-bottom: 2px solid $color-highlight; 
     }
     &--small {
-        height: $box-width;
+        height: $box-width * 1.1;
     }
 }

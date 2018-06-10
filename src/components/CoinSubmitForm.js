@@ -5,6 +5,7 @@ import ShiftButton from './ShiftButton';
 import InputAddress from './InputAddress';
 import CoinLimits from './CoinLimits';
 import {validateInput, validateAmount} from '../validations/shapeshiftValidations';
+import TermsBox from './TermsBox';
 
 class CoinsSubmitForm extends React.Component {
     constructor(props) {
@@ -112,6 +113,7 @@ class CoinsSubmitForm extends React.Component {
                         </div>
                     </div>
                     <div className='row'>
+                        <TermsBox />
                         <ShiftButton 
                         label={this.props.lang.shiftButton}
                         type='submit'

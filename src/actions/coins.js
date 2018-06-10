@@ -5,10 +5,24 @@ export const setCoins = (coins) => ({
     coins
 });
 
+export const addMarketCap = (symbol, cap) => ({
+    type: 'ADD_MARKET_CAP',
+    symbol,
+    cap
+});
+
 export const startSetCoins = (cb) => {
     return (dispatch) => {
         SSAPI.GetCoins((coins) => {
-           const data = dispatch(setCoins(coins)).coins;
+           let i = 0;
+           const data = [];
+           for(let key in coins) {
+               if(coins.hasOwnProperty(key) && coins[key].status === 'available') {
+                data[i] = coins[key];
+                i++;
+               }
+           }
+           dispatch(setCoins(data));
            if(cb !== undefined) {
             cb(data);
            }

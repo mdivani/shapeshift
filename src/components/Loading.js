@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Loading = () => (
-    <div>
-        <h3>loading..</h3>
+    <div className='icon icon--center'>
+        <i className='fas fa-spinner icon--center__spinner'></i>
     </div>
 );
 
