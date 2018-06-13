@@ -5,6 +5,7 @@
     &__item {
         color: $color-btn-primary;
         font-weight: 600;
+        text-transform: capitalize;
 
         &--positive {
             color: $color-success;
@@ -29,7 +30,7 @@
     }
 
     li {
-        text-align: center;
+        width: 100%;
         padding: 3px;
     }
 }
