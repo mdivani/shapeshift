@@ -17,7 +17,8 @@ class CoinsSubmitForm extends React.Component {
             validating: false,
             returnIsValid: false,
             withdrawIsValid: false,
-            amountIsValid: false
+            amountIsValid: false,
+            agreed: false
         }
     }
 
@@ -36,11 +37,16 @@ class CoinsSubmitForm extends React.Component {
         this.setState({amount});
     }
 
+    handleTermsAgreement = (e) => {
+        const agreed = e.target.checked;
+        this.setState({agreed});
+    }
+
     handleFormSubmit = (e) => {
         e.preventDefault();
         //start validation
         //check if empty inputs
-        if(validateInput(this.state.returnAddress, this.state.withdrawAddress)) {
+        if(validateInput(this.state.returnAddress, this.state.withdrawAddress) && this.state.agreed) {
             //check if amount is within limits
             if(validateAmount(this.state.amount, this.props.limits.maxLimit, this.props.limits.minimum)) {
                 //check if correct address are provided
@@ -80,7 +86,6 @@ class CoinsSubmitForm extends React.Component {
     render() {
         return (
             <form className='form' onSubmit={this.handleFormSubmit}>
-                {this.state.validating && <h3>validating...</h3>}
                 <div className="form__group">
                     <div className="row">
                         <div className='col-1-of-2'>
@@ -113,8 +118,12 @@ class CoinsSubmitForm extends React.Component {
                         </div>
                     </div>
                     <div className='row'>
-                        <TermsBox />
+                        <TermsBox 
+                          checked={this.state.agreed}
+                          onChange={this.handleTermsAgreement}
+                        />
                         <ShiftButton 
+                        loading={this.state.validating}
                         label={this.props.lang.shiftButton}
                         type='submit'
                         />
