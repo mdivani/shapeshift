@@ -5,8 +5,9 @@ import CoinSubmitForm from './CoinSubmitForm';
 const CoinSubmitContainer = (props) => (
     <section>
             <CoinSubmitForm
-            withdrawSymbol={props.withdrawSymbol}
-            returnSymbol={props.returnSymbol}
+                handleStartTransaction={props.handleStartTransaction}
+                withdrawSymbol={props.withdrawSymbol}
+                returnSymbol={props.returnSymbol}
             />
     </section>
 );

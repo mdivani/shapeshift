@@ -4,10 +4,10 @@ import { startSetLimits } from '../actions/limits';
 import CoinTrader from '../components/CoinTrader';
 import { startSetTopCoins } from '../actions/topCoins';
 import { setLanguage } from '../actions/language';
-import TopCoinList from '../components/TopCoinList';
 import Header from '../components/Header';
 import ModalContent from '../components/ModalContent';
 import CoinLimits from '../components/CoinLimits';
+import TransactionContainer from '../components/TransactionContainer';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -15,7 +15,8 @@ class HomePage extends React.Component {
         this.state = {
             returnCoin: '',
             withdrawCoin: '',
-            isDepositSelected: true
+            isDepositSelected: true,
+            startTransaction: false
         }
     }
 
@@ -84,6 +85,11 @@ class HomePage extends React.Component {
         this.setState({isDepositSelected});
     }
 
+    handleStartTransaction = (response) => {
+        console.log('response received', response);
+        this.setState({startTransaction: true});
+    }
+
     render() {
         return (
             <div className='container'>
@@ -92,20 +98,29 @@ class HomePage extends React.Component {
                 returnCoin={this.state.returnCoin}
                 withdrawCoin={this.state.withdrawCoin}
                 isDepositSelected={this.state.isDepositSelected}
+                startTransaction={this.state.startTransaction}
               />
               <div className='row'>
                     <div className='col-1-of-2'>
-                        <CoinLimits 
+                        {
+                        !this.state.startTransaction && <CoinLimits 
                         depositSymbol={this.state.returnCoin}
                         withdrawSymbol={this.state.withdrawCoin}
                         limits={this.props.limits}
                         />
-                        <CoinTrader 
+                        }
+                        {
+                        !this.state.startTransaction && <CoinTrader 
                             returnCoin={this.state.returnCoin}
                             withdrawCoin={this.state.withdrawCoin}
                             handleSelectedDirection={this.handleSelectedDirection}
                             isDepositSelected={this.state.isDepositSelected}
+                            handleStartTransaction={this.handleStartTransaction}
                         />
+                        }
+                        {
+                        this.state.startTransaction && <TransactionContainer />
+                        }
                     </div>
                     <div className='col-1-of-2'>
                         <ModalContent

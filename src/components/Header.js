@@ -8,8 +8,24 @@ const Header = (props) => (
         <div className='col-1-of-2'>
             <div className='header__left'>
                 <div className='header__rate'>
-                    <span className='text-primary'>your rate:</span>
-                    <span className='text-secondary'>{` 1 ${props.returnCoin} = ${props.rate} ${props.withdrawCoin}`}</span>
+                    {
+                    !props.startTransaction &&
+                    <span className='text-primary'>
+                      your rate:
+                    </span>
+                    }
+                    {
+                    !props.startTransaction &&
+                    <span className='text-secondary'>
+                        {` 1 ${props.returnCoin} = ${props.rate} ${props.withdrawCoin}`}
+                    </span>
+                    }
+                    {
+                       props.orderId && <span className='text-tertiary'>
+                         <span className='text-tertiary__highlight'>OrderID= </span>
+                         {props.orderId} 
+                         </span>
+                    }
                 </div>
             </div>
         </div>
@@ -31,7 +47,8 @@ const Header = (props) => (
 
 const mapStateToProps = (state) => ({
     lang: state.language,
-    limits: state.limits
+    limits: state.limits,
+    orderId: state.transaction.success ? state.transaction.success.orderId : undefined
 });
 
 export default connect(mapStateToProps)(Header);

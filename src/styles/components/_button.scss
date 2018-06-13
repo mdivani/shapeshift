@@ -12,10 +12,16 @@
         color: $color-secondary;
         font-size: $m-size;
         text-transform: capitalize;
-        
+
+        &:disabled {
+            cursor: default;
+            background-color: rgba($color-btn-primary, .8);
+        }
         &:hover {
+            &:not(:disabled) {
             box-shadow: 0 3px 6px rgba(0,0,0, .15);
-            transform: translateY(-2px);
+            transform: translateY(-2px);                
+            }
         }
 
         &:active {

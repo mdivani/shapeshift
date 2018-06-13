@@ -3,8 +3,8 @@ import { connect} from 'react-redux';
 import SSAPI from '../shapeshift/shapeshift';
 import ShiftButton from './ShiftButton';
 import InputAddress from './InputAddress';
-import CoinLimits from './CoinLimits';
 import {validateInput, validateAmount} from '../validations/shapeshiftValidations';
+import {startSetTransaction} from '../actions/transaction';
 import TermsBox from './TermsBox';
 
 class CoinsSubmitForm extends React.Component {
@@ -67,6 +67,13 @@ class CoinsSubmitForm extends React.Component {
                                     //callback after validations finished and states are set
                                     if(this.state.returnIsValid && this.state.withdrawIsValid) {
                                         console.log('start transaction');
+                                        this.props.handleStartTransaction();
+                                        this.props.startSetTransaction(
+                                            this.state.amount,
+                                            this.state.withdrawAddress,
+                                            this.props.returnSymbol,
+                                            this.props.withdrawSymbol
+                                        );
                                     } else {
                                         console.log('validation failed!');
                                     }
@@ -123,6 +130,7 @@ class CoinsSubmitForm extends React.Component {
                           onChange={this.handleTermsAgreement}
                         />
                         <ShiftButton 
+                        disabled={this.state.validating}
                         loading={this.state.validating}
                         label={this.props.lang.shiftButton}
                         type='submit'
@@ -139,4 +147,10 @@ const mapStateToProps = (state) => ({
     limits: state.limits
 });
 
-export default connect(mapStateToProps)(CoinsSubmitForm);
+const mapDispatchToProps = (dispatch) => ({
+    startSetTransaction: (amount, withdrawalAddress, coin1, coin2,cb) => {
+       return dispatch(startSetTransaction(amount, withdrawalAddress, coin1, coin2,cb));
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoinsSubmitForm);
