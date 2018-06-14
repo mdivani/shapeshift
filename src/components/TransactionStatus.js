@@ -1,6 +1,6 @@
 import React from 'react';
 import QRCode from 'qrcode.react';
-import moment from 'moment';
+import CountDownTimer from './CountDownTimer';
 
 const TransactionStatus = (props) => (
     <div className='row'>
@@ -13,7 +13,9 @@ const TransactionStatus = (props) => (
                         </div>
                         <p className='text-primary'>Deposit to: {props.deposit}</p>
                         <p className='text-primary'>Deposit amount: {props.depositAmount}</p>
-                        <p className='text-tertiary text-tertiary__highlight'>{moment(props.expiration).format('DD MM HH:MM:SS')}</p>
+                        <CountDownTimer
+                            timestamp={props.expiration}
+                         />
                     </div>
                     <div className='row'>
                     <p className='text-primary'>withdrawal address: {props.withdrawal}</p>
