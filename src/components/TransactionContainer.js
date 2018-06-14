@@ -22,6 +22,7 @@ class TransactionContainer extends React.Component {
                     qoutedRate={this.props.transaction.success.qoutedRate}
                     maxLimit={this.props.transaction.success.maxLimit}
                     minerFee={this.props.transaction.success.minerFee}
+                    returnAddress={this.props.transaction.success.returnAddress}
                 /> : 
                 <Loading />
         )

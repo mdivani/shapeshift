@@ -33,4 +33,13 @@
     &--small {
         height: $box-width * 1.1;
     }
+    &--qrcode {
+        cursor: default;
+        margin-right: auto;
+        margin-left: $xs-size;
+
+        &:hover {
+            box-shadow: none;
+        }
+    }
 }
