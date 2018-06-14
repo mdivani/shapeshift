@@ -1,0 +1,19 @@
+.tx {
+    padding: $s-size;
+
+    &__txt {
+        color: darken($color-primary, 30%);
+        text-transform: capitalize;
+        margin: $xs-size auto;
+        margin-left: 0;
+        font-size: 1.3rem;
+    }
+
+    &_address {
+        background-color: darken($color-secondary, 15%);
+        border: 1px solid $color-primary;
+        border-radius: 2px;
+        font-size: 1.3rem;
+        padding: 3px 5px;
+    }
+}

@@ -34,9 +34,9 @@
         height: $box-width * 1.1;
     }
     &--qrcode {
+        background-color: transparent;
         cursor: default;
-        margin-right: auto;
-        margin-left: $xs-size;
+        margin: 0 auto;
 
         &:hover {
             box-shadow: none;
