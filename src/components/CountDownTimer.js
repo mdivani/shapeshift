@@ -7,7 +7,8 @@ class CountDownTimer extends React.Component {
         this.state = {
             minutes: 9,
             seconds: 59,
-            interval: 1000
+            interval: 1000,
+            expired: false
         }
     }
 
@@ -15,17 +16,21 @@ class CountDownTimer extends React.Component {
         const currentTime = + new Date();
         const diffTime = this.props.timestamp - currentTime;
         let duration = moment.duration(diffTime, 'milliseconds');
-        console.log(duration);
+
         this.setState({
             minutes: duration.minutes(),
             seconds: duration.seconds()
         });
 
-        setInterval(() => {
+        const stopId = setInterval(() => {
             duration = moment.duration(duration - 1000, 'millisecond');
-            this.setState({
+            this.setState(() => ({
                 minutes: duration.minutes(),
                 seconds: duration.seconds()
+            }), () => {
+                if(this.state.minutes === 0 && this.state.seconds === 0) 
+                clearInterval(stopId);
+                this.setState({expired: true});
             });
         }, 1000);
     }
@@ -36,9 +41,9 @@ class CountDownTimer extends React.Component {
 
     render() {
         return (
-            <div className='timer'>
-                <label className='timer__label'>time remaining</label>
-                <span className='timer__countdown'>
+            <div className={`timer ${this.state.minutes < 1 && 'timer--warning'}`}>
+                <label className='timer__label'>remaining time</label>
+                <span className='timer__counter'>
                    {`${this.state.minutes}:${this.state.seconds}`}
                 </span>
             </div>
