@@ -101,33 +101,34 @@ class HomePage extends React.Component {
                 startTransaction={this.state.startTransaction}
               />
               <div className='row'>
-                    <div className='col-1-of-2'>
-                        {
-                        !this.state.startTransaction && <CoinLimits 
-                        depositSymbol={this.state.returnCoin}
-                        withdrawSymbol={this.state.withdrawCoin}
-                        limits={this.props.limits}
-                        />
-                        }
-                        {
-                        !this.state.startTransaction && <CoinTrader 
-                            returnCoin={this.state.returnCoin}
-                            withdrawCoin={this.state.withdrawCoin}
-                            handleSelectedDirection={this.handleSelectedDirection}
-                            isDepositSelected={this.state.isDepositSelected}
-                            handleStartTransaction={this.handleStartTransaction}
-                        />
-                        }
-                        {
+                       {
+                        !this.state.startTransaction && 
+                       <div>
+                        <div className='col-1-of-2'>
+                            <CoinLimits 
+                            depositSymbol={this.state.returnCoin}
+                            withdrawSymbol={this.state.withdrawCoin}
+                            limits={this.props.limits}
+                            />
+                            <CoinTrader 
+                                returnCoin={this.state.returnCoin}
+                                withdrawCoin={this.state.withdrawCoin}
+                                handleSelectedDirection={this.handleSelectedDirection}
+                                isDepositSelected={this.state.isDepositSelected}
+                                handleStartTransaction={this.handleStartTransaction}
+                            />
+                        </div>
+                        <div className='col-1-of-2'>
+                            <ModalContent
+                                handleSelectCoin={this.handleSelectCoin}
+                            />
+                        </div>
+                    </div>
+                    }
+                    {
                         this.state.startTransaction && <TransactionContainer />
-                        }
-                    </div>
-                    <div className='col-1-of-2'>
-                        <ModalContent
-                            handleSelectCoin={this.handleSelectCoin}
-                         />
-                    </div>
-              </div>
+                    }
+                </div>
             </div>
         );
     }

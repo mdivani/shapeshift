@@ -1,0 +1,17 @@
+.qr {
+    text-align: center;
+    padding: $xs-size;
+    margin-top: $l-size;
+
+    &__code {
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
+
+    &__label {
+        width: 100%;
+        color: darken($color-primary, $amount: 30%);
+        text-transform: capitalize;
+    }
+}

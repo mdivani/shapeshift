@@ -4,16 +4,26 @@
     &__txt {
         color: darken($color-primary, 30%);
         text-transform: capitalize;
-        margin: $xs-size auto;
+        margin: $s-size auto;
         margin-left: 0;
-        font-size: 1.3rem;
+        font-size: $m-size;
     }
-
-    &_address {
-        background-color: darken($color-secondary, 15%);
-        border: 1px solid $color-primary;
-        border-radius: 2px;
-        font-size: 1.3rem;
-        padding: 3px 5px;
+    &__address {
+        color: $color-btn-primary;
+        margin-right: $xs-size;
+    }
+    &__icon {
+        vertical-align: middle;
+        margin-right: $xs-size;
+    }
+    &__title {
+        color: darken($color-primary, 30%);
+        text-transform: capitalize;
+    }
+    &__status {
+        
+        &--pending {
+            color: $color-primary;
+        }
     }
 }

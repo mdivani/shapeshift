@@ -2,7 +2,7 @@ import moment from 'moment';
 //12t9YDPgwueZ9NyMgw519p7AA8isjr6SMw btc
 //0xd12cd8a37f074e7eafae618c986ff825666198bd eth
 //rPspuKM5rCw5EkRDD9vGL816V15DwtSa3L?dt=36860 ripple
-const timestamp = + new Date() + 1000*600;
+const timestamp = + new Date() + 1000*120;
 
 const defaultData = {
     success: {

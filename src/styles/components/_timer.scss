@@ -1,36 +1,29 @@
 .timer {
-    background-color: $color-secondary;
-    border: .5px solid $color-success;
+    background-color: darken($color-btn-primary, 2%);
+    border-bottom: .5px solid $color-success;
     border-radius: 3px;
     box-shadow: 0 3px 6px rgba(0,0,0, .25);
-    margin-right: 0;
-    margin-left: auto;
+    margin-top: $m-size;
     text-align: center;
     padding: $xs-size;
-    position: relative;
     width: $timer-width;
-    height: $timer-width;
 
     &__label {
-        color: darken($color-primary, 30%);
+        color: $color-secondary;
         width: 100%;
         text-transform: capitalize;
     }
     &__counter {
         color: $color-highlight;
         display: inline-block;
-        font-size: 300%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        font-size: 150%;
         width: 100%;
     }
 
     &--warning {
         border-color: $color-warning;
 
-        timer__counter {
+        .timer__counter {
             color: $color-warning;
         }
     }
