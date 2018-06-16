@@ -7,11 +7,13 @@
         display: block;
         width: 90%;
         margin: auto;
+        margin-bottom: $s-size;
     }
 
     &__label {
         width: 100%;
-        color: darken($color-primary, $amount: 30%);
+        color: darken($color-primary, $amount: 20%);
+        font-size: $font-size-l;
         text-transform: capitalize;
     }
 }

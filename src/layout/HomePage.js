@@ -16,7 +16,7 @@ class HomePage extends React.Component {
             returnCoin: '',
             withdrawCoin: '',
             isDepositSelected: true,
-            startTransaction: true
+            startTransaction: false
         }
     }
 

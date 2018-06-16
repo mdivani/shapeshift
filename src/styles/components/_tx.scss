@@ -1,9 +1,15 @@
 .tx {
     padding: $s-size;
 
+    &__price {
+        color: $color-blue-dark;
+        font-weight: 600;
+        font-size: $font-size-s;
+    }
     &__txt {
-        color: darken($color-primary, 30%);
+        color: darken($color-primary, 20%);
         text-transform: capitalize;
+        text-shadow: 3px rgba($color-primary, .8);
         margin: $s-size auto;
         margin-left: 0;
         font-size: $m-size;
@@ -19,11 +25,15 @@
     &__title {
         color: darken($color-primary, 30%);
         text-transform: capitalize;
+        margin-top: 0;
     }
     &__status {
         
         &--pending {
             color: $color-primary;
+        }
+        &--error {
+            color: $color-warning;
         }
     }
 }

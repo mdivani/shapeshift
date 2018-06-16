@@ -4,28 +4,17 @@ import Navigation from '../components/Navigation';
 
 const Header = (props) => (
     <header className='header'>
+    { !props.startTransaction &&
       <div className='row'>
         <div className='col-1-of-2'>
             <div className='header__left'>
                 <div className='header__rate'>
-                    {
-                    !props.startTransaction &&
                     <span className='text-primary'>
                       your rate:
                     </span>
-                    }
-                    {
-                    !props.startTransaction &&
                     <span className='text-secondary'>
                         {` 1 ${props.returnCoin} = ${props.rate} ${props.withdrawCoin}`}
                     </span>
-                    }
-                    {
-                       props.orderId && <span className='text-tertiary'>
-                         <span className='text-tertiary__highlight'>OrderID= </span>
-                         {props.orderId} 
-                         </span>
-                    }
                 </div>
             </div>
         </div>
@@ -42,6 +31,21 @@ const Header = (props) => (
             </div>
         </div>
       </div>
+    }
+    {
+      props.startTransaction && 
+      <div className='row'>
+            <div className='header__left'>
+                <div className='header__rate'>
+                {
+                props.orderId && 
+                <span className='text-tertiary'> Order ID = {props.orderId} </span>
+                }
+                </div>
+                <Navigation />
+            </div>
+        </div> 
+    }
     </header>
 );
 

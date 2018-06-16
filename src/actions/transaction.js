@@ -15,6 +15,7 @@ export const startSetTransaction = (amount, withdrawalAddress, coin1, coin2) => 
         const fixedTransaction = shapeshiftApi.CreateFixedTx(amount, withdrawalAddress, coin1, coin2);
         shapeshiftApi.FixedAmountTx(fixedTransaction, (response) => {
             dispatch(setTransaction(response));
+            console.log(response);
         });
     }
 }

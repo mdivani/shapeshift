@@ -4,6 +4,7 @@ import QRCode from 'qrcode.react';
 import CountDownTimer from './CountDownTimer';
 import getCoinFromPair from '../utilities/getCoinFromPair';
 import ExchangeStatusContainer from './ExchangeStatusContainer';
+import moment from 'moment';
 
 const TransactionStatus = (props) => (
     <div className='row'>
@@ -24,11 +25,12 @@ const TransactionStatus = (props) => (
                                 <div className='tx'>
                                     <div>
                                         <CountDownTimer
-                                        timestamp={props.expiration}
+                                            expired={props.expired}
+                                            timestamp={props.expiration}
                                         />
                                     </div>
                                     <p className='tx__txt'>
-                                        {`send ${props.depositAmount} ${props.depositCoin.symbol} to:`}
+                                        send <span className='tx__price'>{props.depositAmount}</span> {props.depositCoin.symbol} to:
                                     </p>
                                     <p className='tx__txt'>
                                         <img className='tx__icon' src={props.depositCoin.imageSmall} />
@@ -37,7 +39,9 @@ const TransactionStatus = (props) => (
                                         </span>
                                     </p>
                                     <p className='tx__txt'>
-                                        {`fixed rate: 1 ${props.depositCoin.symbol} = ${props.qoutedRate} ${props.receiveCoin.symbol}`}
+                                        fixed rate: 
+                                        <span className='tx__price'> 1</span> {props.depositCoin.symbol} = 
+                                        <span className='tx__price'> {props.qoutedRate}</span> {props.receiveCoin.symbol}
                                     </p>
                                 </div>
                             </div>
@@ -48,21 +52,22 @@ const TransactionStatus = (props) => (
                             <p className='tx__txt'>
                               withdrawal address:
                               <span className='tx__address'> {props.withdrawal}</span>
-                              <img src={props.depositCoin.imageSmall} className='tx__icon' />
+                              <img src={props.receiveCoin.imageSmall} className='tx__icon' />
                             </p>
                             <p className='tx__txt'>
                               return address:
                               <span className='tx__address'> {props.returnAddress}</span>
-                              <img src={props.receiveCoin.imageSmall} className='tx__icon' />
+                              <img src={props.depositCoin.imageSmall} className='tx__icon' />
                             </p>
                             <p className='tx__txt'> 
-                              {`you will receive: ${props.withdrawalAmount} ${props.receiveCoin.symbol}`}
+                              you will receive: <span className='tx__price'>{props.withdrawalAmount}</span> {props.receiveCoin.symbol}
                             </p>
                             <p className='tx__txt'>
-                              miner fee: <span className='tx__status tx__status--pending'>0.0014</span> {props.receiveCoin.symbol}
+                              miner fee: <span className='tx__price'>0.0014</span> {props.receiveCoin.symbol}
                             </p>
                             <p className='tx__txt'>
-                              status: <span className='tx__status tx__status--pending'>pending</span>
+                              status: {props.statusError ? <span className='tx__status tx__status--error'>{props.statusError}</span> : 
+                                                           <span className='tx__status tx__status--pending'>pending</span>}
                             </p>
                           </div>
                         </div>
@@ -70,11 +75,23 @@ const TransactionStatus = (props) => (
                     <hr />
                     <div className='row'>
                         <div className='col-1-of-2'>
-                            <ExchangeStatusContainer />
+                            <ExchangeStatusContainer
+                                depositAddress={props.deposit}
+                                handleStatusError={props.handleStatusError}
+                            />
                         </div>
                         <div className='col-1-of-2'>
                             <div className='tx'>
                                 <h4 className='tx__title'>transaction history</h4>
+                                {
+                                    props.recentTx.length > 0 && props.recentTx.map((tx) => {
+                                        return (
+                                            <p key={tx.txid} className='tx__txt'>
+                                             {moment(tx.timestamp).format('YYYY MMM Do, h:mm:ss a')} - <span className='tx__price'>{tx.amount}</span> was converted to {tx.curOut} from {tx.curIn}
+                                            </p>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>

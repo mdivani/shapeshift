@@ -25,6 +25,7 @@
 
         .timer__counter {
             color: $color-warning;
+            text-transform: capitalize;
         }
     }
 }
