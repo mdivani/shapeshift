@@ -91,7 +91,9 @@ class HomePage extends React.Component {
     }
 
     handleAbortTransaction = () => {
-        this.setState({startTransaction: false});
+        this.setState({
+            startTransaction: false
+        });
     }
 
     render() {
