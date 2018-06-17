@@ -18,29 +18,18 @@
     &__pending {
         animation: fadeOut 1s ease-in  infinite;
         color: $color-secondary;
-
-        & + .exchange__label {
-            color: $color-secondary; 
-        }
     }
 
     &__expired {
-        color: ighten($color-primary, 15%);;
-
-        & + .exchange__label {
-            color: ighten($color-primary, 15%);; 
-        }
+        color: lighten($color-primary, 15%);;
     }
 
     &__confirmed {
         color: $color-highlight;
-
-        & + .exchange__label {
-            color: $color-highlight; 
-        }
     }
 
     &__label {
+        color: $color-secondary;
         font-size: $font-size-s;
         vertical-align: top;
         text-transform: capitalize;

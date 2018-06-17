@@ -18,3 +18,9 @@
         color: $color-highlight;
     }
 }
+
+.text-warning {
+    color: $color-warning;
+    text-transform: capitalize;
+    font-size: $font-size-s;
+}

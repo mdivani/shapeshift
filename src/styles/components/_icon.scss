@@ -17,10 +17,12 @@
     }
 
     &__arr-back {
-        display: inline-block;
         color: $color-secondary;
         font-size: $l-size;
-        margin-left: $xs-size;
+        position: absolute;
+        left: $xs-size;
+        top: 50%;
+        transform: translateY(-50%);
 
         &:hover {
             cursor: pointer;

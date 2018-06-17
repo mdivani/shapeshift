@@ -3,7 +3,7 @@ const language = {
         "greeting": "hello",
         "returnAddress": "return address",
         "withdrawAddress": "withdraw address",
-        "amount": "amount",
+        "amount": "deposit amount",
         "shiftButton": "start transaction"
     },
     "jp" : {

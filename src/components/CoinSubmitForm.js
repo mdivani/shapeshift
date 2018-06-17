@@ -15,31 +15,47 @@ class CoinsSubmitForm extends React.Component {
             withdrawAddress: '',
             amount: '',
             validating: false,
-            returnIsValid: false,
-            withdrawIsValid: false,
-            amountIsValid: false,
-            agreed: false
+            returnIsValid: true,
+            withdrawIsValid: true,
+            amountIsValid: true,
+            agreed: false,
+            error: false
         }
     }
 
     handleReturnChange = (e) => {
         const returnAddress = e.target.value;
-        this.setState({returnAddress});
+        this.setState({
+            error: false,
+            returnIsValid: true,
+            returnAddress
+        });
     }
 
     handleWithdrawChange = (e) => {
         const withdrawAddress = e.target.value;
-        this.setState({withdrawAddress});
+        this.setState({
+            error: false,
+            withdrawIsValid: true,
+            withdrawAddress
+        });
     }
 
     handleAmountChange = (e) => {
         const amount = e.target.value;
-        this.setState({amount});
+        this.setState({
+            error: false,
+            amountIsValid: true,
+            amount
+        });
     }
 
     handleTermsAgreement = (e) => {
         const agreed = e.target.checked;
-        this.setState({agreed});
+        this.setState({
+            error: false,
+            agreed
+        });
     }
 
     handleFormSubmit = (e) => {
@@ -71,6 +87,7 @@ class CoinsSubmitForm extends React.Component {
                                         this.props.startSetTransaction(
                                             this.state.amount,
                                             this.state.withdrawAddress,
+                                            this.state.returnAddress,
                                             this.props.returnSymbol,
                                             this.props.withdrawSymbol
                                         );
@@ -83,10 +100,10 @@ class CoinsSubmitForm extends React.Component {
                     });
                 });
             } else {
-                alert('your amount is not within trx limit');
+                this.setState({amountIsValid: false})
             }
         } else {
-            alert('please fill neccessary fields!');
+            this.setState({error: true});
         }
     }
 
@@ -97,7 +114,7 @@ class CoinsSubmitForm extends React.Component {
                     <div className="row">
                         <div className='col-1-of-2'>
                             <InputAddress 
-                                className='input__text'
+                                className={`input__text ${!this.state.returnIsValid && 'input__error'}`}
                                 type='text'
                                 label={this.props.lang.returnAddress}
                                 value={this.state.returnAddress}
@@ -107,7 +124,7 @@ class CoinsSubmitForm extends React.Component {
                         </div>
                         <div className='col-1-of-2'>
                             <InputAddress 
-                                className='input__text'
+                                className={`input__text ${!this.state.withdrawIsValid && 'input__error'}`}
                                 type='text'
                                 label={this.props.lang.withdrawAddress}
                                 value={this.state.withdrawAddress}
@@ -115,7 +132,7 @@ class CoinsSubmitForm extends React.Component {
                                 onValueChangeHandler={this.handleWithdrawChange}
                                 />
                             <InputAddress 
-                                className='input__text'
+                                className={`input__text ${!this.state.amountIsValid && 'input__error'}`}
                                 type='text'
                                 label={this.props.lang.amount}
                                 value={this.state.value}
@@ -125,6 +142,11 @@ class CoinsSubmitForm extends React.Component {
                         </div>
                     </div>
                     <div className='row'>
+                        {this.state.error &&                        
+                        <div className='error'>
+                            <p className='error__message'>*Please fill all the neccessary fields</p>
+                        </div>
+                        }
                         <TermsBox 
                           checked={this.state.agreed}
                           onChange={this.handleTermsAgreement}
@@ -148,8 +170,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startSetTransaction: (amount, withdrawalAddress, coin1, coin2,cb) => {
-       return dispatch(startSetTransaction(amount, withdrawalAddress, coin1, coin2,cb));
+    startSetTransaction: (amount, withdrawalAddress, returnAddress, coin1, coin2, cb) => {
+       return dispatch(startSetTransaction(amount, withdrawalAddress, returnAddress, coin1, coin2,cb));
     }
 })
 

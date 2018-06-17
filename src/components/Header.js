@@ -36,11 +36,16 @@ const Header = (props) => (
       props.startTransaction && 
       <div className='row'>
             <div className='header__left'>
+                <span className='icon' onClick={props.handleAbortTransaction}>
+                    <i className='fas fa-angle-left icon__arr-back'></i>
+                </span>
                 <div className='header__rate'>
-                {
-                props.orderId && 
-                <span className='text-tertiary'> Order ID = {props.orderId} </span>
-                }
+                    {
+                    props.orderId && 
+                    <span className='text-tertiary'> 
+                        <span className='text-primary'>Order ID</span> = {props.orderId} 
+                    </span>
+                    }
                 </div>
                 <Navigation />
             </div>

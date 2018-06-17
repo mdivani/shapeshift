@@ -32,7 +32,10 @@ class CountDownTimer extends React.Component {
             }), () => {
                 if(this.state.minutes === 0 && this.state.seconds === 0) {
                     clearInterval(stopId);
-                    this.setState({expired: true});
+                    this.setState({expired: true}, this.props.handleExpiration);
+                }
+                else if(this.props.finished) {
+                    clearInterval(stopId);
                 }
             });
         }, 1000);

@@ -37,6 +37,7 @@ var ShapeShift = (function() {
         xmlhttp.open(apiEp.method, url, true);
         if(type.toUpperCase() === 'POST') {
             xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            console.log(JS(data));
             xmlhttp.send(JS(data));
         } else if(type.toUpperCase() === 'GET') {
             xmlhttp.send();
@@ -97,7 +98,7 @@ var ShapeShift = (function() {
 
     SS.GetRate = function(coin1, coin2, cb) {
         var pair = coinPairer(coin1, coin2);
-        var apiEp = getArgsAdder(endPoints.Rate, pair);
+        var apiEp = getArgsAdder(endPoints.Rate, [pair]);
         var xmlhttp = CreateXmlHttp();
         AjaxRequest(xmlhttp, apiEp, function(response) {
             cbProtector(cb, response);
@@ -234,10 +235,12 @@ var ShapeShift = (function() {
         return data;
     }
 
-    SS.CreateFixedTx = function(amount, withdrawalAddress, coin1, coin2){
+    SS.CreateFixedTx = function(amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2){
         var NormalTx = {
-            amount : amount,
+            amount: amount,
+            depositAmount : depositAmount,
             withdrawal : withdrawalAddress,
+            returnAddress: returnAddress,
             pair: coinPairer(coin1, coin2)
         };
         return NormalTx;
@@ -248,7 +251,7 @@ var ShapeShift = (function() {
         data = FixedAmountValidate(data, this);
         var apiEp = getArgsAdder(endPoints.FixedAmountTx);
         var xmlhttp = CreateXmlHttp();
-        console.log(data);
+        console.log(apiEp);
         AjaxRequest(xmlhttp, apiEp, data, function(response) {
             cbProtector(cb, response);
         });

@@ -90,6 +90,10 @@ class HomePage extends React.Component {
         this.setState({startTransaction: true});
     }
 
+    handleAbortTransaction = () => {
+        this.setState({startTransaction: false});
+    }
+
     render() {
         return (
             <div className='container'>
@@ -99,6 +103,7 @@ class HomePage extends React.Component {
                 withdrawCoin={this.state.withdrawCoin}
                 isDepositSelected={this.state.isDepositSelected}
                 startTransaction={this.state.startTransaction}
+                handleAbortTransaction={this.handleAbortTransaction}
               />
               <div className='row'>
                        {

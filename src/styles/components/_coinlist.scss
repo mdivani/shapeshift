@@ -1,6 +1,8 @@
 .coin-list {
     width: 100%;
     text-align: center;
+    position: relative;
+    height: 100%;
     
     &__box {
         display: inline-block;

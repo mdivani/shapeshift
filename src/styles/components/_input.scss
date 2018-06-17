@@ -31,4 +31,8 @@
         visibility: hidden;
         transform: translateY(4rem);
     }
+
+    &__error {
+        box-shadow: 0 2px 4px rgba($color-warning, .15), 0px -2px 4px rgba($color-warning, .15);
+    }
 }
