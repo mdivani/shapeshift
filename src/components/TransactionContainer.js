@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import shapeshift from '../shapeshift/shapeshift';
 import TransactionStatus from './TransactionStatus';
 import Loading from './Loading';
+import getCoinFromPair from '../utilities/getCoinFromPair';
+import getDtTag from '../utilities/getDtTag';
 
 class TransactionContainer extends React.Component {
     constructor(props) {
@@ -10,6 +12,8 @@ class TransactionContainer extends React.Component {
         this.state = {
             status: 'pending',
             statusError: '',
+            dtTag: '',
+            deposit: '',
             expired: false,
             transactionId: '',
             loaded: false,
@@ -23,6 +27,22 @@ class TransactionContainer extends React.Component {
 
     componentDidUpdate() { 
         if(this.props.transaction.success && !this.state.loaded) {
+            //check if special incoming coin
+            if(this.props.depositCoin.specialIncoming) {
+                const dtTag = getDtTag(this.props.transaction.success.deposit);
+                console.log('dest', dtTag);
+                this.setState({
+                    deposit: this.props.transaction.success.deposit.replace(/\?dt=\d+$/g, ''),
+                    dtTag
+                });
+            }
+            else {
+                this.setState({
+                    deposit: this.props.transaction.success.deposit
+                });
+            }
+
+            //load
             this.setState({loaded: true}, () => {
                 const stopId = setInterval(() => {
                     if(this.state.status === 'expired') {
@@ -87,13 +107,15 @@ class TransactionContainer extends React.Component {
                     pair={this.props.transaction.success.pair}
                     withdrawal={this.props.transaction.success.withdrawal}
                     withdrawalAmount={this.props.transaction.success.withdrawalAmount}
-                    deposit={this.props.transaction.success.deposit}
+                    deposit={this.state.deposit}
                     depositAmount={this.props.transaction.success.depositAmount}
                     expiration={this.props.transaction.success.expiration}
                     quotedRate={this.props.transaction.success.quotedRate}
                     maxLimit={this.props.transaction.success.maxLimit}
                     minerFee={this.props.transaction.success.minerFee}
                     returnAddress={this.props.transaction.success.returnAddress}
+                    xrpDestTag={this.props.transaction.success.xrpDestTag}
+                    outgoingDestTag={this.state.dtTag}
                     recentTx={this.state.recentTx}
                     status={this.state.status}
                     expired={this.state.expired}
@@ -107,8 +129,11 @@ class TransactionContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    transaction: state.transaction
-})
+    transaction: state.transaction,
+    depositCoin: state.transaction.success ? 
+    getCoinFromPair(state.transaction.success.pair, state.coins) :
+    {}
+});
 
 export default connect(mapStateToProps)(TransactionContainer);
 

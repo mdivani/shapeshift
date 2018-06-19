@@ -10,20 +10,21 @@ export const updateTransaction = (updatedTx) => ({
     updatedTx
 });
 
-export const startSetTransaction = (depositAmount, withdrawalAddress, returnAddress, coin1, coin2) => {
+export const startSetTransaction = (depositAmount, withdrawalAddress, returnAddress, coin1, coin2, destTag) => {
     return (dispatch) => {
         shapeshiftApi.GetRate(coin1, coin2, (response) => {
             if(response.rate) {
                 const rate = response.rate;
                 const amount = rate * depositAmount;
-                RequestTx(amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2, dispatch);
+                RequestTx(amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2, destTag, dispatch);
             }
         });
     }
 }
 
-const RequestTx = (amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2, dispatch) => {
-    const fixedTransaction = shapeshiftApi.CreateFixedTx(amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2);
+const RequestTx = (amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2, destTag, dispatch) => {
+    const fixedTransaction = 
+    shapeshiftApi.CreateFixedTx(amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2, destTag);
     shapeshiftApi.FixedAmountTx(fixedTransaction, (response) => {
         dispatch(setTransaction(response));
         console.log(response);
