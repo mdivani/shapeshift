@@ -3,7 +3,7 @@ import { roundPrice, roundCap } from '../utilities/roundNumbers';
 
 const TopCoinBox = (props) => (
     <ul className='coin-info'>
-        <li><label className='coin-info__item'>{props.symbol}</label></li>
+        <li><label className='coin-info__title'>{props.symbol}</label></li>
         <li><label className='coin-info__item'>market cap: ${roundCap(props.cap)}M </label></li>
         <li><label className='coin-info__item'>Price: ${roundPrice(props.price)} </label></li>
         <li>

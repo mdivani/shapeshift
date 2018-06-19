@@ -3,20 +3,19 @@
     padding: 0;
 
     &__item {
-        color: $color-btn-primary;
         font-weight: 600;
+        font-size: $font-size-s;
         text-transform: capitalize;
 
         &--positive {
-            color: $color-success;
+            color: $color-secondary;
         }
         &--negative {
-            color: $color-warning;
+            color: lighten($color-warning, 10%);
         }
     }
 
     &__title {
-        color: $color-btn-primary;
         font-size: $m-size;
         font-weight: 600;
         margin: 0 auto;

@@ -1,18 +1,21 @@
 .coin-box {
-    background-color: darken($color-secondary, 2%);
+    background-color: inherit;
     display: block;
     cursor: pointer;
-    color: $color-primary;
-    margin: $xs-size auto;
+    margin: 0 auto;
     padding: $xs-size;
     text-align: center;
     width: $box-width;
     &__image {
         display: block;
         margin: auto;
-        width: 60%;
+        width: 70%;
         &--small {
+            background-color: $color-secondary;
             width: $icon-size-large;
+            border-radius: 100%;
+            padding: $xs-size;
+            border: 3px solid $color-secondary;
         }
     }
     &__label {

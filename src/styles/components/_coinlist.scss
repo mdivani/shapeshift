@@ -5,7 +5,25 @@
     height: 100%;
     
     &__box {
+        background-color: $color-box-blue;
+        border-bottom: 4px solid transparent;
+        color: $color-secondary;
         display: inline-block;
         margin: $xs-size;
+        transition: all .3s ease;
+
+        &:nth-child(even) {
+            background-color: $color-box-green;
+            &:hover,
+            &:active {
+                background-color: lighten($color-box-green, 5%);
+                border-bottom: 4px solid $color-box-blue;
+            }
+        }
+        &:hover,
+        &:active {
+            background-color: lighten($color-box-blue, 5%);
+            border-bottom: 4px solid $color-highlight;
+        }
     }
 }

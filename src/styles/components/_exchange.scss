@@ -1,6 +1,6 @@
 .exchange {
     box-shadow: 0 3px 6px rgba(0,0,0, .15);
-    background-color: darken($color-btn-primary, 2%);
+    background-color: $color-box-blue;
     color: lighten($color-primary, 15%);
     margin: $l-size auto;
     text-align: center;
