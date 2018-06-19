@@ -8,7 +8,7 @@
         text-transform: capitalize;
 
         &--positive {
-            color: $color-secondary;
+            color: $color-box-green;
         }
         &--negative {
             color: lighten($color-warning, 10%);
