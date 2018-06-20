@@ -235,13 +235,14 @@ var ShapeShift = (function() {
         return data;
     }
 
-    SS.CreateFixedTx = function(amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2){
+    SS.CreateFixedTx = function(amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2, destTag = ''){
         var NormalTx = {
             amount: amount,
             depositAmount : depositAmount,
             withdrawal : withdrawalAddress,
             returnAddress: returnAddress,
-            pair: coinPairer(coin1, coin2)
+            pair: coinPairer(coin1, coin2),
+            destTag: destTag
         };
         return NormalTx;
     };

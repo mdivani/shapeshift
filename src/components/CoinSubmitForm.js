@@ -6,6 +6,7 @@ import InputAddress from './InputAddress';
 import {validateInput, validateAmount} from '../validations/shapeshiftValidations';
 import {startSetTransaction} from '../actions/transaction';
 import TermsBox from './TermsBox';
+import getCoin from '../utilities/getCoin';
 
 class CoinsSubmitForm extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class CoinsSubmitForm extends React.Component {
             returnAddress: '',
             withdrawAddress: '',
             amount: '',
+            destTag: '',
             validating: false,
             returnIsValid: true,
             withdrawIsValid: true,
@@ -48,6 +50,15 @@ class CoinsSubmitForm extends React.Component {
             amountIsValid: true,
             amount
         });
+    }
+
+    handleDestTagChange = (e) => {
+        const destTag = e.target.value;
+        if(destTag) {
+            this.setState({
+                destTag
+            });
+        }
     }
 
     handleTermsAgreement = (e) => {
@@ -89,7 +100,8 @@ class CoinsSubmitForm extends React.Component {
                                             this.state.withdrawAddress,
                                             this.state.returnAddress,
                                             this.props.returnSymbol,
-                                            this.props.withdrawSymbol
+                                            this.props.withdrawSymbol,
+                                            this.state.destTag
                                         );
                                     } else {
                                         console.log('validation failed!');
@@ -121,6 +133,14 @@ class CoinsSubmitForm extends React.Component {
                                 isvalid={this.state.returnIsValid}
                                 onValueChangeHandler={this.handleReturnChange}
                                 />
+                            <InputAddress 
+                                className={`input__text ${!this.state.amountIsValid && 'input__error'}`}
+                                type='text'
+                                label={this.props.lang.amount}
+                                value={this.state.value}
+                                isvalid={this.state.amountIsValid}
+                                onValueChangeHandler={this.handleAmountChange}
+                            />
                         </div>
                         <div className='col-1-of-2'>
                             <InputAddress 
@@ -130,15 +150,16 @@ class CoinsSubmitForm extends React.Component {
                                 value={this.state.withdrawAddress}
                                 isvalid={this.state.withdrawIsValid}
                                 onValueChangeHandler={this.handleWithdrawChange}
+                            />
+                            {(this.props.receiveCoin && this.props.receiveCoin.specialOutgoing) && 
+                                <InputAddress
+                                    className={`input__text ${!this.state.withdrawIsValid && 'input__error'}`}
+                                    label={this.props.receiveCoin.fieldName}
+                                    value={this.state.destTag}
+                                    isvalid={this.state.withdrawIsValid}
+                                    onValueChangeHandler={this.handleDestTagChange}
                                 />
-                            <InputAddress 
-                                className={`input__text ${!this.state.amountIsValid && 'input__error'}`}
-                                type='text'
-                                label={this.props.lang.amount}
-                                value={this.state.value}
-                                isvalid={this.state.amountIsValid}
-                                onValueChangeHandler={this.handleAmountChange}
-                                />
+                            }
                         </div>
                     </div>
                     <div className='row'>
@@ -164,14 +185,15 @@ class CoinsSubmitForm extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
     lang: state.language,
-    limits: state.limits
+    limits: state.limits,
+    receiveCoin: getCoin(props.withdrawSymbol, state.coins)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startSetTransaction: (amount, withdrawalAddress, returnAddress, coin1, coin2, cb) => {
-       return dispatch(startSetTransaction(amount, withdrawalAddress, returnAddress, coin1, coin2,cb));
+    startSetTransaction: (amount, withdrawalAddress, returnAddress, coin1, coin2, destTag) => {
+       return dispatch(startSetTransaction(amount, withdrawalAddress, returnAddress, coin1, coin2, destTag));
     }
 })
 

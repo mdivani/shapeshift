@@ -38,6 +38,11 @@ const TransactionStatus = (props) => (
                                 {props.deposit}
                             </span>
                         </p>
+                        {
+                            props.depositCoin.specialIncoming && <p className='tx__txt'>
+                               destination tag: <span className='tx__address'>{props.outgoingDestTag}</span>
+                            </p>
+                        }
                         <p className='tx__txt'>
                             fixed rate: 
                             <span className='tx__price'> 1</span> {props.depositCoin.symbol} = 
@@ -59,6 +64,12 @@ const TransactionStatus = (props) => (
                         <span className='tx__address'> {props.returnAddress}</span>
                         <img src={props.depositCoin.imageSmall} className='tx__icon' />
                     </p>
+                    {
+                        props.xrpDestTag && <p className='tx__txt'>
+                            destination tag: 
+                            <span className='tx__address'>{ props.xrpDestTag}</span>
+                        </p>
+                    }
                     <p className='tx__txt'> 
                         you will receive: <span className='tx__price'>{props.withdrawalAmount}</span> {props.receiveCoin.symbol}
                     </p>

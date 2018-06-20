@@ -4,7 +4,8 @@ const language = {
         "returnAddress": "return address",
         "withdrawAddress": "withdraw address",
         "amount": "deposit amount",
-        "shiftButton": "start transaction"
+        "shiftButton": "start transaction",
+        "destTag": "destination tag"
     },
     "jp" : {
         "greeting": "jp",
