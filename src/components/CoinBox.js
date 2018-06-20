@@ -5,6 +5,7 @@ import TopCoinBox from './TopCoinBox';
 const CoinBox = ({coin = { image: "", name: "", symbol: "", cap: 0}, 
                  topCoins = [],
                  direction, 
+                 lang,
                  handleBoxClick, 
                  isSelected}) => {
     
@@ -12,7 +13,7 @@ const CoinBox = ({coin = { image: "", name: "", symbol: "", cap: 0},
         <div 
           onClick={handleBoxClick}
           className={`coin-box ${!direction && 'coin-box--small'} ${isSelected && 'coin-box--active'}`}>
-            {direction && <p className='coin-box__label'> {direction === 'in' ? 'deposit' : 'recieve' } </p>}
+            {direction && <p className='coin-box__label'> {direction === 'in' ? lang.deposit : lang.receive } </p>}
             <img 
                 src={`${coin.image}`} 
                 className={direction ? 'coin-box__image' : 'coin-box__image--small'} />
@@ -37,7 +38,8 @@ const CoinBox = ({coin = { image: "", name: "", symbol: "", cap: 0},
 
 const mapStateToProps = (state) => ({
     coins: state.coins,
-    topCoins: state.topCoins
+    topCoins: state.topCoins,
+    lang: state.language
 });
 
 export default connect(mapStateToProps)(CoinBox);

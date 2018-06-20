@@ -10,7 +10,7 @@ class TransactionContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: 'pending',
+            status: '',
             statusError: '',
             dtTag: '',
             deposit: '',
@@ -22,7 +22,9 @@ class TransactionContainer extends React.Component {
     }
 
     componentDidMount() {
-
+        this.setState({
+            status: this.props.lang.pending
+        })
     }
 
     componentDidUpdate() { 
@@ -30,7 +32,6 @@ class TransactionContainer extends React.Component {
             //check if special incoming coin
             if(this.props.depositCoin.specialIncoming) {
                 const dtTag = getDtTag(this.props.transaction.success.deposit);
-                console.log('dest', dtTag);
                 this.setState({
                     deposit: this.props.transaction.success.deposit.replace(/\?dt=\d+$/g, ''),
                     dtTag
@@ -44,29 +45,30 @@ class TransactionContainer extends React.Component {
 
             //load
             this.setState({loaded: true}, () => {
-                const stopId = setInterval(() => {
+                this.stopId = setInterval(() => {
                     if(this.state.status === 'expired') {
-                        clearInterval(stopId);
+                        clearInterval(this.stopId);
                     } else {
                         shapeshift.GetStatusOfDepositToAddress(this.props.transaction.success.deposit, (data) => {
                             this.handleStatusChange(data);
                             if(this.state.status === 'complete') {
-                                clearInterval(stopId);
+                                clearInterval(this.stopId);
                             }
                         });
                     }
-                //    this.state.status === 'pending' ? 
-                //    this.handleStatusChange({status: 'received'}) : 
-                //    this.handleStatusChange({status: 'complete'});
                 }, 5000);
             });
         } 
     }
 
+    componentWillUnmount() {
+        clearInterval(this.stopId);
+    }
+
     handleExpiration = () => {
         this.setState({
             expired: true,
-            status: 'expired'
+            status: this.props.lang.expired
         });
     }
 
@@ -74,7 +76,7 @@ class TransactionContainer extends React.Component {
         switch(data.status) {
             case 'received':
                 this.setState(() => ({
-                    status: 'received'
+                    status: this.props.lang.received
                 }));
                 break ;
             case 'complete':
@@ -93,7 +95,7 @@ class TransactionContainer extends React.Component {
                 break;
             default: 
                 this.setState({
-                    status: 'pending'
+                    status: this.props.lang.pending
                 });
                 break;
         }
@@ -129,6 +131,7 @@ class TransactionContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    lang: state.language,
     transaction: state.transaction,
     depositCoin: state.transaction.success ? 
     getCoinFromPair(state.transaction.success.pair, state.coins) :

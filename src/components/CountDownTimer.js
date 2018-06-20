@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 
 class CountDownTimer extends React.Component {
@@ -16,7 +17,6 @@ class CountDownTimer extends React.Component {
         const currentTime = + new Date();
         const diffTime = this.props.timestamp - currentTime;
         let duration = moment.duration(diffTime, 'milliseconds');
-        console.log('error expired', this.props.expired);
 
         this.setState({
             minutes: duration.minutes(),
@@ -24,32 +24,36 @@ class CountDownTimer extends React.Component {
             expired: this.props.expired
         });
 
-        const stopId = setInterval(() => {
+        this.stopId = setInterval(() => {
             duration = moment.duration(duration - 1000, 'millisecond');
             this.setState(() => ({
                 minutes: duration.minutes(),
                 seconds: duration.seconds()
             }), () => {
                 if(this.state.minutes === 0 && this.state.seconds === 0) {
-                    clearInterval(stopId);
+                    clearInterval(this.stopId);
                     this.setState({expired: true}, this.props.handleExpiration);
                 }
                 else if(this.props.finished) {
-                    clearInterval(stopId);
+                    clearInterval(this.stopId);
                 }
             });
         }, 1000);
     }
 
+    componentWillUnmount() {
+        clearInterval(this.stopId);
+    }
+
     render() {
         return (
             <div className={`timer ${this.state.minutes < 1 && 'timer--warning'}`}>
-                <label className='timer__label'>remaining time</label>
+                <label className='timer__label'>{this.props.lang.remainingTime}</label>
                 <span className='timer__counter'>
                 {
                     !this.state.expired ? `${this.state.minutes >= 10 ? this.state.minutes : '0' + this.state.minutes} :
                     ${this.state.seconds >= 10 ? this.state.seconds : '0' + this.state.seconds}` :
-                    'expired'
+                    this.props.lang.expired
                 }
                 </span>
             </div>
@@ -57,4 +61,8 @@ class CountDownTimer extends React.Component {
     }
 }
 
-export default CountDownTimer;
+const mapStateToProps = (state) => ({
+    lang: state.language
+});
+ 
+export default connect(mapStateToProps)(CountDownTimer);

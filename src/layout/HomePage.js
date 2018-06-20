@@ -4,6 +4,7 @@ import { startSetLimits } from '../actions/limits';
 import CoinTrader from '../components/CoinTrader';
 import { startSetTopCoins } from '../actions/topCoins';
 import { setLanguage } from '../actions/language';
+import { cancelTransaction } from '../actions/transaction';
 import Header from '../components/Header';
 import ModalContent from '../components/ModalContent';
 import CoinLimits from '../components/CoinLimits';
@@ -35,7 +36,10 @@ class HomePage extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(prevState.returnCoin !== this.state.returnCoin || prevState.withdrawCoin !== this.state.withdrawCoin) {
+        if(prevState.returnCoin !== this.state.returnCoin || 
+            prevState.withdrawCoin !== this.state.withdrawCoin || 
+            prevState.startTransaction !== this.state.startTransaction) 
+        {
             localStorage.setItem('return', this.state.returnCoin);
             localStorage.setItem('withdraw', this.state.withdrawCoin);
             this.props.startSetLimits(this.state.returnCoin, this.state.withdrawCoin);
@@ -85,14 +89,15 @@ class HomePage extends React.Component {
         this.setState({isDepositSelected});
     }
 
-    handleStartTransaction = (response) => {
-        console.log('response received', response);
+    handleStartTransaction = () => {
         this.setState({startTransaction: true});
     }
 
     handleAbortTransaction = () => {
         this.setState({
             startTransaction: false
+        }, () => {
+            this.props.cancelTransaction();
         });
     }
 
@@ -149,7 +154,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     startSetTopCoins: () => dispatch(startSetTopCoins()),
     setLanguage: (option) => dispatch(setLanguage(option)),
-    startSetLimits: (coin1, coin2) => dispatch(startSetLimits(coin1, coin2))
+    startSetLimits: (coin1, coin2) => dispatch(startSetLimits(coin1, coin2)),
+    cancelTransaction: () => dispatch(cancelTransaction())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

@@ -10,6 +10,10 @@ export const updateTransaction = (updatedTx) => ({
     updatedTx
 });
 
+export const cancelTransaction = () => ({
+    type: 'CANCEL_TX'
+})
+
 export const startSetTransaction = (depositAmount, withdrawalAddress, returnAddress, coin1, coin2, destTag) => {
     return (dispatch) => {
         shapeshiftApi.GetRate(coin1, coin2, (response) => {

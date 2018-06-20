@@ -16,7 +16,7 @@ const TransactionStatus = (props) => (
                             className='qr__code'
                             size={169}
                             value={props.deposit} />
-                        <label className='qr__label'>deposit address</label>
+                        <label className='qr__label'>{props.lang.depositAddress}</label>
                     </div>
                 </div>
                 <div className='col-2-of-3'>
@@ -44,7 +44,7 @@ const TransactionStatus = (props) => (
                             </p>
                         }
                         <p className='tx__txt'>
-                            fixed rate: 
+                            {props.lang.fixedRate}: 
                             <span className='tx__price'> 1</span> {props.depositCoin.symbol} = 
                             <span className='tx__price'> {props.quotedRate}</span> {props.receiveCoin.symbol}
                         </p>
@@ -53,14 +53,14 @@ const TransactionStatus = (props) => (
             </div>
             <div className='col-1-of-2'>
                 <div className='tx'>
-                    <h3 className='tx__title'>transaction details</h3>
+                    <h3 className='tx__title'>{props.lang.txDetails}</h3>
                     <p className='tx__txt'>
-                        receive address:
+                        {props.lang.receiveAddress}:
                         <span className='tx__address'> {props.withdrawal}</span>
                         <img src={props.receiveCoin.imageSmall} className='tx__icon' />
                     </p>
                     <p className='tx__txt'>
-                        refund address:
+                        {props.lang.refundAddress}:
                         <span className='tx__address'> {props.returnAddress}</span>
                         <img src={props.depositCoin.imageSmall} className='tx__icon' />
                     </p>
@@ -71,10 +71,10 @@ const TransactionStatus = (props) => (
                         </p>
                     }
                     <p className='tx__txt'> 
-                        you will receive: <span className='tx__price'>{props.withdrawalAmount}</span> {props.receiveCoin.symbol}
+                        {props.lang.youWillReceive}: <span className='tx__price'>{props.withdrawalAmount}</span> {props.receiveCoin.symbol}
                     </p>
                     <p className='tx__txt'>
-                        miner fee: <span className='tx__price'>{props.minerFee}</span> {props.receiveCoin.symbol}
+                        {props.lang.fee}: <span className='tx__price'>{props.minerFee}</span> {props.receiveCoin.symbol}
                     </p>
                 </div>
             </div>
@@ -90,9 +90,11 @@ const TransactionStatus = (props) => (
             </div>
             <div className='col-1-of-2'>
                 <div className='tx'>
-                    <h4 className='tx__title'>transaction status</h4>
+                    <h4 className='tx__title'>{props.lang.txStatus}</h4>
                     <p className='tx__txt'>
-                        current status: <span className='tx__status tx__status--pending'>{props.status}</span>
+                        {props.lang.status}: <span className='tx__status tx__status--pending'>{
+                            props.status
+                        }</span>
                     </p>
                     {
                     props.statusError && <p className='tx__txt'>
@@ -115,7 +117,8 @@ const TransactionStatus = (props) => (
 
 const mapStateToProps = (state, props) => ({
     depositCoin: getCoinFromPair(props.pair, state.coins, true),
-    receiveCoin: getCoinFromPair(props.pair, state.coins, false)
+    receiveCoin: getCoinFromPair(props.pair, state.coins, false),
+    lang: state.language
 })
 
 export default connect(mapStateToProps)(TransactionStatus);

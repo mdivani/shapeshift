@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CoinList from '../components/CoinList';
 import InputAddress from './InputAddress';
 
-export default class ModalContent extends React.Component {
+class ModalContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +23,7 @@ export default class ModalContent extends React.Component {
                   className={'input__text'}
                   value={this.state.identifier}
                   onValueChangeHandler={this.handleIdentifierChange}
-                  label='quick search'
+                  label={this.props.lang.search}
                   focused={true}
                 />
                 <CoinList 
@@ -33,3 +34,9 @@ export default class ModalContent extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) =>  ({
+    lang: state.language
+});
+
+export default connect(mapStateToProps)(ModalContent);

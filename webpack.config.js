@@ -11,8 +11,8 @@ module.exports = (env) => {
     return {
       entry: './src/app.js',
       output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
+        path: path.join(__dirname, 'public', 'dist'),
+        filename: 'bundle.js',
       },
       module: {
         rules: [{

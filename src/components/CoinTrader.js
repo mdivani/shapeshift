@@ -6,7 +6,7 @@ import CoinSubmitContainer from './CoinSubmitContainer';
 const CoinTrader = (props) => (
     <div className='trader-box'>
         <div className='trader-box__content trader-box__content--active'>
-            <h2 className='trader-box__title'>choose which coins to trade</h2>
+            <h2 className='trader-box__title'>{props.lang.title}</h2>
             <div className='row'>
                 <div className='col-1-of-2'>
                 <CoinSelector

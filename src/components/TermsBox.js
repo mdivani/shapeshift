@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const TermsBox = (props) => (
     <div className='checkbox'>
@@ -9,9 +10,13 @@ const TermsBox = (props) => (
          className='checkbox__check' 
          checked={props.checked} />
         <label htmlFor='terms' className='checkbox__label'>
-        I agree to the <a href='#'>Terms</a> and certify that I am the beneficial owner of the input assets and the destination address.
+        {props.lang.terms}
         </label>
     </div>
 );
 
-export default TermsBox;
+const mapStateToProps = (state) => ({
+    lang: state.language
+})
+
+export default connect(mapStateToProps)(TermsBox);

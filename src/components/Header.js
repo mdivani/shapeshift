@@ -10,7 +10,7 @@ const Header = (props) => (
             <div className='header__left'>
                 <div className='header__rate'>
                     <span className='text-primary'>
-                      your rate:
+                      {props.lang.yourRate}:
                     </span>
                     <span className='text-secondary'>
                         {` 1 ${props.returnCoin} = ${props.rate} ${props.withdrawCoin}`}
@@ -23,7 +23,8 @@ const Header = (props) => (
                 <div className='header__left'>
                     <div className='header__rate'>
                         <span className='text-tertiary'>
-                            please select <span className='text-tertiary__highlight'>{props.isDepositSelected ? 'deposit' : 'withdraw'}</span> coin
+                            please select <span className='text-tertiary__highlight'>{props.isDepositSelected ?
+                                 props.lang.deposit : props.lang.receive}</span> coin
                         </span>
                     </div>
                     <Navigation />
