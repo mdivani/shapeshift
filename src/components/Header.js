@@ -23,8 +23,8 @@ const Header = (props) => (
                 <div className='header__left'>
                     <div className='header__rate'>
                         <span className='text-tertiary'>
-                            please select <span className='text-tertiary__highlight'>{props.isDepositSelected ?
-                                 props.lang.deposit : props.lang.receive}</span> coin
+                            <span className='text-tertiary__highlight'>{props.isDepositSelected ?
+                                 props.lang.deposit : props.lang.receive}</span>
                         </span>
                     </div>
                     <Navigation />

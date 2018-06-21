@@ -27,7 +27,10 @@ const language = {
         "txStatus": "transaction status",
         "status": "current status",
         "expired": "expired",
-        "pending": "pending"
+        "pending": "pending",
+        "txSuccessMessage": "transaction was successfully completed",
+        "txId": "transaction Id",
+        "reason": "reason"
     },
     "jp" : {
         "returnAddress": "通貨送付元アドレス",
@@ -56,7 +59,10 @@ const language = {
         "txStatus": "トランザクション状況",
         "status": "ステータス",
         "expired": "有効期限切れ",
-        "pending": "入金待ち"
+        "pending": "入金待ち",
+        "txSuccessMessage": "取引完了",
+        "txId": "トランザクションID",
+        "reason": "詳細"
     }
 }
 

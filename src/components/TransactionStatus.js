@@ -104,8 +104,8 @@ const TransactionStatus = (props) => (
                     {
                     props.status === 'complete' &&
                     <div className='tx'>
-                        <p className='tx__txt'>transaction was successfully completed</p>
-                        <p className='tx__txt'>transaction ID: {props.transactionId}</p>
+                        <p className='tx__txt'>{props.lang.txSuccess}</p>
+                        <p className='tx__txt'>{props.lang.txId} {props.transactionId}</p>
                     </div>
                     }
                 </div>
