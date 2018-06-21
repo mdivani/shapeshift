@@ -117,18 +117,20 @@ class HomePage extends React.Component {
                         !this.state.startTransaction && 
                        <div>
                         <div className='col-1-of-2'>
-                            <CoinLimits 
-                            depositSymbol={this.state.returnCoin}
-                            withdrawSymbol={this.state.withdrawCoin}
-                            limits={this.props.limits}
-                            />
-                            <CoinTrader 
-                                returnCoin={this.state.returnCoin}
-                                withdrawCoin={this.state.withdrawCoin}
-                                handleSelectedDirection={this.handleSelectedDirection}
-                                isDepositSelected={this.state.isDepositSelected}
-                                handleStartTransaction={this.handleStartTransaction}
-                            />
+                            <div className='container__selector'>
+                                <CoinLimits 
+                                depositSymbol={this.state.returnCoin}
+                                withdrawSymbol={this.state.withdrawCoin}
+                                limits={this.props.limits}
+                                />
+                                <CoinTrader 
+                                    returnCoin={this.state.returnCoin}
+                                    withdrawCoin={this.state.withdrawCoin}
+                                    handleSelectedDirection={this.handleSelectedDirection}
+                                    isDepositSelected={this.state.isDepositSelected}
+                                    handleStartTransaction={this.handleStartTransaction}
+                                />
+                            </div>
                         </div>
                         <div className='col-1-of-2'>
                             <ModalContent
