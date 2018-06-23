@@ -28,4 +28,9 @@
             text-transform: capitalize;
         }
     }
+
+    @media(max-width: 500px) {
+        margin-top: $xs-size;
+        width: 100%;   
+    }
 }

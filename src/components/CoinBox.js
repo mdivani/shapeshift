@@ -10,7 +10,7 @@ const CoinBox = ({coin = { image: "", name: "", symbol: "", cap: 0},
                  isSelected}) => {
     
     return (
-        <div 
+        <figure 
           onClick={handleBoxClick}
           className={`coin-box ${!direction && 'coin-box--small'} ${isSelected && 'coin-box--active'}`}>
             {direction && <p className='coin-box__label'> {direction === 'in' ? lang.deposit : lang.receive } </p>}
@@ -19,7 +19,7 @@ const CoinBox = ({coin = { image: "", name: "", symbol: "", cap: 0},
                 className={direction ? 'coin-box__image' : 'coin-box__image--small'} />
             {
                 direction ? 
-                <label className='coin-box__label'>{coin.name }</label> 
+                <figcaption className='coin-box__label'>{coin.name }</figcaption> 
                 : topCoins.length > 0 && topCoins.map((topCoin) => {
                     if(topCoin.short === coin.symbol) {
                         return <TopCoinBox
@@ -32,7 +32,7 @@ const CoinBox = ({coin = { image: "", name: "", symbol: "", cap: 0},
                     }
                 })
             }
-        </div>
+        </figure>
     )
 }
 
