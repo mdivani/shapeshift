@@ -6,13 +6,15 @@ class CoinSelector extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            coin: undefined,
+            coin: {},
             coinName: '',
         }
     }
 
     componentDidMount() {
-        this.setCoin();
+        if(this.props.coins.length > 0) {
+            this.setCoin();
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
