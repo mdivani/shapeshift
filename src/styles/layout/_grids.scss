@@ -1,6 +1,8 @@
 .row {
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
+    position: relative;
+
     @include clearfix;
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
@@ -17,12 +19,79 @@
         width: calc((100% - #{$gutter-horizontal})/2);
     }
 
+    .col-1-of-2--sm {
+        width: calc((100% - #{$gutter-horizontal})/2);
+
+        @media (max-width: 500px) {
+            width: 100%;
+            margin: 0 auto;
+            transition: all .3s ease;
+        }
+    }
+
+    .col-1-of-2--md {
+        width: calc((100% - #{$gutter-horizontal})/2);
+        @media(max-width: 770px) {
+            width: 100%;
+            margin: 0 auto;
+            transition: all .3s ease;
+
+            &--hide {
+                display: none;
+                width: 0;
+                padding: 0;
+                margin: 0;
+                visibility: hidden;
+            }
+        }
+    }
+
+    .col-1-of-2-lg {
+        width: calc((100% - #{$gutter-horizontal})/2);
+
+        @media (max-width: 1080px) {
+            width: 100%;
+            margin: 0 auto;
+            transition: all .3s ease;
+        }
+    }
+
+    .col-1-of-2--burger {
+        width: calc((100% - #{$gutter-horizontal})/2);
+        @media(max-width: 770px) {
+            display: none;
+
+            &-active {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+
     .col-1-of-3 {
         width: calc((100% - #{$gutter-horizontal}*2)/3);
     }
 
+    .col-1-of-3--sm {
+        width: calc((100% - #{$gutter-horizontal}*2)/3);
+
+        @media (max-width: 500px) {
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+
     .col-2-of-3 {
         width: calc(2 * (100% - #{$gutter-horizontal}*2)/3 + #{$gutter-horizontal});
+    }
+
+    .col-2-of-3--sm {
+        width: calc(2 * (100% - #{$gutter-horizontal}*2)/3 + #{$gutter-horizontal});
+
+        @media (max-width: 500px) {
+            width: 100%;
+            margin: 0 auto;
+        }
     }
 
     .col-1-of-4 {

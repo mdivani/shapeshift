@@ -32,8 +32,24 @@
     &--active {
         box-shadow: 0 3px 6px rgba(0,0,0, .15);
         border-bottom: 2px solid $color-highlight; 
+        @media (max-width: 770px) {
+            box-shadow: none;
+            border-bottom: none;
+        }
     }
     &--small {
         height: $box-width * 1.1;
+    }
+
+    @media (max-width: 980px) {
+        font-size: $font-size-s;
+        width: $box-width-s;
+    }
+    @media (max-width: 770px) {
+        width: $box-width;
+    }
+    @media (max-width: 500px) {
+        font-size: $font-size-s;
+        width: $box-width-s;
     }
 }

@@ -17,7 +17,8 @@ class HomePage extends React.Component {
             returnCoin: '',
             withdrawCoin: '',
             isDepositSelected: true,
-            startTransaction: false
+            isSelected: false,
+            startTransaction: true
         }
     }
 
@@ -43,21 +44,24 @@ class HomePage extends React.Component {
             localStorage.setItem('return', this.state.returnCoin);
             localStorage.setItem('withdraw', this.state.withdrawCoin);
             this.props.startSetLimits(this.state.returnCoin, this.state.withdrawCoin);
+            console.log(this.state.returnCoin);
         }
     }
 
     handleSelectCoin = (coin) => {
-            this.handleCoinSelection(coin.symbol);
+        this.handleCoinSelection(coin.symbol);
     }
 
     handleCoinSelection = (symbol) => {
         if(this.state.isDepositSelected) {
             if(this.state.withdrawCoin !== symbol) {
                 this.setState({
-                    returnCoin: symbol
+                    returnCoin: symbol,
+                    isSelected: false
                 });
             } else {
                 this.setState((prevState) => ({
+                    isSelected: false,
                     withdrawCoin: prevState.returnCoin
                 }), () => this.setState({returnCoin: symbol}));
             }
@@ -65,12 +69,14 @@ class HomePage extends React.Component {
         else {
             if(this.state.returnCoin !== symbol) {
                 this.setState({
+                    isSelected: false,
                     withdrawCoin: symbol
                 });
             } else {
                 this.setState((prevState) => {
                     return ({
-                    returnCoin: prevState.withdrawCoin
+                        isSelected: false,
+                        returnCoin: prevState.withdrawCoin
                 })}, () => {
                     this.setState({withdrawCoin: symbol});
                 });
@@ -86,7 +92,10 @@ class HomePage extends React.Component {
     }
 
     handleSelectedDirection = (isDepositSelected) => {
-        this.setState({isDepositSelected});
+        this.setState({
+            isSelected: true,
+            isDepositSelected
+        });
     }
 
     handleStartTransaction = () => {
@@ -116,12 +125,12 @@ class HomePage extends React.Component {
                        {
                         !this.state.startTransaction && 
                        <div>
-                        <div className='col-1-of-2'>
+                        <div className={`col-1-of-2--md ${this.state.isSelected && 'col-1-of-2--md--hide'}`}>
                             <div className='container__selector'>
                                 <CoinLimits 
-                                depositSymbol={this.state.returnCoin}
-                                withdrawSymbol={this.state.withdrawCoin}
-                                limits={this.props.limits}
+                                    depositSymbol={this.state.returnCoin}
+                                    withdrawSymbol={this.state.withdrawCoin}
+                                    limits={this.props.limits}
                                 />
                                 <CoinTrader 
                                     returnCoin={this.state.returnCoin}
@@ -131,8 +140,8 @@ class HomePage extends React.Component {
                                     handleStartTransaction={this.handleStartTransaction}
                                 />
                             </div>
-                        </div>
-                        <div className='col-1-of-2'>
+                        </div> 
+                        <div className={`col-1-of-2--burger ${this.state.isSelected && 'col-1-of-2--burger-active'}`}>
                             <ModalContent
                                 handleSelectCoin={this.handleSelectCoin}
                             />

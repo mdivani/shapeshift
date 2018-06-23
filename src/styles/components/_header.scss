@@ -17,6 +17,24 @@
         left: 50%;
         transform: translateX(-50%);
         white-space: nowrap;
+
+        @media (max-width: 500px) {
+            left: $xs-size;
+            transform: translateX(0); 
+        }
+    }
+
+    &__selected {
+        display: inline;
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+
+        @media(max-width: 770px) {
+            display: none;
+        }
     }
 
     &__lang {

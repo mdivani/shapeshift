@@ -11,17 +11,23 @@ class CoinSelector extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.setCoin();
+    }
+
     componentDidUpdate(prevProps, prevState) {
-        if(this.state.coinName !== this.props.coinName || prevProps.coins.length !== this.props.coins.length) 
-        this.setState(() => ({coinName: this.props.coinName}), () => {
-            this.setState(() => ({
-                coin: this.props.coins.filter((value) => {
-                    if(value.symbol === this.state.coinName) {
-                        return value;
-                    }
-                })[0]
-            }));
-        });          
+        if(this.state.coin && this.state.coin.symbol !== this.props.coinName) 
+            this.setCoin();
+    }
+
+    setCoin = () => {
+        this.setState(() => ({
+            coin: this.props.coins.filter((value) => {
+                if(value.symbol === this.props.coinName) {
+                    return value;
+                }
+            })[0]
+        })); 
     }
 
     handleBoxClick = () => {

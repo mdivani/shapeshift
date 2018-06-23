@@ -2,6 +2,7 @@
     background-color: $color-blue-dark;
     cursor: pointer;
     position: relative;
+    z-index: 2000;
 
     &__select {
         display: none;

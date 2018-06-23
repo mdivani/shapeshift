@@ -10,6 +10,11 @@
 
         &:not(:last-child) {
             border-right: .5px solid darken($color-secondary, 20%);
+
+            @media (max-width: 500px) {
+                border-bottom: .5px solid darken($color-secondary, 20%);
+                border-right: none;
+            }
         }
 
         > p {
@@ -17,6 +22,16 @@
             &:not(:last-child) {
                 padding-bottom: $xs-size;
             }
+
+            @media (max-width) {
+                &:not(:last-child) {
+                    padding-bottom: 3px;
+                }  
+            }
         }
+    }
+
+    @media (max-width: 980px) {
+        font-size: $font-size-s;
     }
 }

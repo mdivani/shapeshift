@@ -19,7 +19,7 @@ const defaultData = {
     }
 }
 
-export default (state = {}, actions) => {
+export default (state = defaultData, actions) => {
     switch(actions.type) {
         case 'SET_TX': 
             return actions.transaction;

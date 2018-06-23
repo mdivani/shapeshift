@@ -6,7 +6,7 @@ const Header = (props) => (
     <header className='header'>
     { !props.startTransaction &&
       <div className='row'>
-        <div className='col-1-of-2'>
+        <div className='col-1-of-2--md'>
             <div className='header__left'>
                 <div className='header__rate'>
                     <span className='text-primary'>
@@ -18,10 +18,10 @@ const Header = (props) => (
                 </div>
             </div>
         </div>
-        <div className='col-1-of-2'>
+        <div className='col-1-of-2--md'>
             <div className='row'>
                 <div className='header__left'>
-                    <div className='header__rate'>
+                    <div className='header__selected'>
                         <span className='text-tertiary'>
                             <span className='text-tertiary__highlight'>{props.isDepositSelected ?
                                  props.lang.deposit : props.lang.receive}</span>

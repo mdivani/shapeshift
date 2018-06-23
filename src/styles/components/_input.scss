@@ -1,5 +1,7 @@
 .input {
-    margin: $xs-size 0;
+    margin: $xs-size auto;
+    width: 100%;
+
     &__text {
         border: 1px solid rgba($color-primary, .5);
         border-radius: 3px;
@@ -34,5 +36,9 @@
 
     &__error {
         box-shadow: 0 2px 4px rgba($color-warning, .15), 0px -2px 4px rgba($color-warning, .15);
+    }
+
+    @media (max-width: 500px) {
+        margin: 2px auto;
     }
 }
