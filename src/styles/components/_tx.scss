@@ -16,6 +16,7 @@
     &__address {
         color: $color-btn-primary;
         margin-right: $xs-size;
+        word-break: break-all;
     }
     &__icon {
         vertical-align: middle;

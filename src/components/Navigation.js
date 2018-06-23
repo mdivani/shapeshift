@@ -2,7 +2,7 @@ import React from 'react';
 import LanguageBox from './LanguageBox';
 
 const Navigation = (props) => (
-    <nav>
+    <nav className='header__dropdown'>
         <LanguageBox />
     </nav>
 );

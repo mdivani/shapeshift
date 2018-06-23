@@ -6,18 +6,18 @@ import getCoinFromPair from '../utilities/getCoinFromPair';
 import ExchangeStatusBox from './ExchangeStatusBox';
 
 const TransactionStatus = (props) => (
-    <div className='container__selector'>
-
+    <div>
         <div className='row'>
             <div className='col-1-of-2-lg'>
                 <div className='col-1-of-3--sm'> 
-                    <div className='qr'>
+                    <figure className='qr'>
                         <QRCode 
                             className='qr__code'
-                            size={169}
+                            renderAs={'svg'}
+                            size={400}
                             value={props.deposit} />
-                        <label className='qr__label'>{props.lang.depositAddress}</label>
-                    </div>
+                        <figcaption className='qr__label'>{props.lang.depositAddress}</figcaption>
+                    </figure>
                 </div>
                 <div className='col-2-of-3--sm'>
                     <div className='tx'>
@@ -54,6 +54,9 @@ const TransactionStatus = (props) => (
             <div className='col-1-of-2-lg'>
                 <div className='tx'>
                     <h3 className='tx__title'>{props.lang.txDetails}</h3>
+                    <p className='tx__txt'>
+                        Order ID = <span className='tx__address'>{props.orderId}</span> 
+                    </p>
                     <p className='tx__txt'>
                         {props.lang.receiveAddress}:
                         <span className='tx__address'> {props.withdrawal}</span>
@@ -111,7 +114,6 @@ const TransactionStatus = (props) => (
                 </div>
             </div>
         </div>
-
     </div>
 );
 

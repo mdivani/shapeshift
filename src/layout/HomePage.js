@@ -44,7 +44,6 @@ class HomePage extends React.Component {
             localStorage.setItem('return', this.state.returnCoin);
             localStorage.setItem('withdraw', this.state.withdrawCoin);
             this.props.startSetLimits(this.state.returnCoin, this.state.withdrawCoin);
-            console.log(this.state.returnCoin);
         }
     }
 
@@ -118,15 +117,15 @@ class HomePage extends React.Component {
                 returnCoin={this.state.returnCoin}
                 withdrawCoin={this.state.withdrawCoin}
                 isDepositSelected={this.state.isDepositSelected}
-                startTransaction={this.state.startTransaction}
+                isTxPage={this.state.startTransaction}
                 handleAbortTransaction={this.handleAbortTransaction}
               />
-              <div className='row'>
+              <main className='row'>
                        {
                         !this.state.startTransaction && 
-                       <div>
+                       <section>
                         <div className={`col-1-of-2--md ${this.state.isSelected && 'col-1-of-2--md--hide'}`}>
-                            <div className='container__selector'>
+                            <section className='container__selector'>
                                 <CoinLimits 
                                     depositSymbol={this.state.returnCoin}
                                     withdrawSymbol={this.state.withdrawCoin}
@@ -139,19 +138,24 @@ class HomePage extends React.Component {
                                     isDepositSelected={this.state.isDepositSelected}
                                     handleStartTransaction={this.handleStartTransaction}
                                 />
-                            </div>
+                            </section>
                         </div> 
                         <div className={`col-1-of-2--burger ${this.state.isSelected && 'col-1-of-2--burger-active'}`}>
-                            <ModalContent
-                                handleSelectCoin={this.handleSelectCoin}
-                            />
+                            <section className='container__list'>
+                                <ModalContent
+                                    handleSelectCoin={this.handleSelectCoin}
+                                />
+                            </section>
                         </div>
-                    </div>
+                    </section>
                     }
                     {
-                        this.state.startTransaction && <TransactionContainer />
+                        this.state.startTransaction && 
+                        <section className='container__selector'>
+                            <TransactionContainer />
+                        </section>
                     }
-                </div>
+                </main>
             </div>
         );
     }

@@ -26,12 +26,10 @@ class LanguageBox extends React.Component {
 
     render() {
         return (
-            <div className='header__lang'>
                 <DropDown
                   handleChange={this.handleLanguageChange}
                   defaultLanguage={this.state.defaultLanguage}
                  />
-            </div>
         )
     }
 } 

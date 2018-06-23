@@ -34,6 +34,10 @@
         vertical-align: top;
         text-transform: capitalize;
         width: 100%;
+
+        @media (max-width: 500px) {
+            display: none;
+        }
     }
 
     &__icon {

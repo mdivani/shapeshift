@@ -18,7 +18,7 @@ class ModalContent extends React.Component {
 
     render() {
         return (
-            <div className='container__list'>
+            <div>
                 <InputAddress 
                   className={'input__text'}
                   value={this.state.identifier}
