@@ -15,8 +15,8 @@ class CoinSelector extends React.Component {
         this.setCoin();
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if(this.state.coin && this.state.coin.symbol !== this.props.coinName) 
+    componentDidUpdate() {
+        if((this.state.coin && this.state.coin.symbol !== this.props.coinName) || !this.state.coin) 
             this.setCoin();
     }
 
