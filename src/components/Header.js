@@ -6,7 +6,7 @@ import BackArrow from '../components/BackArrow';
 const Header = (props) => (
     <header className='header'>
       <div className='row'>
-        <div className='col-1-of-2--md'>
+        <div className={props.isTxPage ? 'col-1-of-2-md col-1-of-2-md--full-width' : 'col-1-of-2-md'}>
                 {
                     props.isTxPage && <BackArrow  
                                             handleAbortTransaction={props.handleAbortTransaction}/>
@@ -20,7 +20,7 @@ const Header = (props) => (
                     </span>
                 </div>
         </div>
-        <div className='col-1-of-2--md'>
+        <div className={props.isTxPage ? 'remove' : 'col-1-of-2-md'}>
             <div className='header__selected'>
                 <span className='text-tertiary'>
                     <span className='text-tertiary__highlight'>
@@ -30,8 +30,9 @@ const Header = (props) => (
                     </span>
                 </span>
             </div>
-            <Navigation />
+            { !props.isTxPage && <Navigation />}
         </div>
+        { props.isTxPage && <Navigation />}
       </div>
     </header>
 );

@@ -12,3 +12,18 @@
 .selected-box {
     border-bottom: 1.5px solid orange;
 }
+
+.hide {
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+.remove {
+    display: none;
+}
+
+.full-width {
+    width: 100%;
+}

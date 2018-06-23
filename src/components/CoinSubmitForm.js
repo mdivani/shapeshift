@@ -124,7 +124,7 @@ class CoinsSubmitForm extends React.Component {
             <form className='form' onSubmit={this.handleFormSubmit}>
                 <div className="form__group">
                     <div className="row">
-                        <div className='col-1-of-2--sm'>
+                        <div className='col-1-of-2-sm'>
                             <InputAddress 
                                 className={`input__text ${!this.state.returnIsValid && 'input__error'}`}
                                 type='text'
@@ -142,7 +142,7 @@ class CoinsSubmitForm extends React.Component {
                                 onValueChangeHandler={this.handleAmountChange}
                             />
                         </div>
-                        <div className='col-1-of-2--sm'>
+                        <div className='col-1-of-2-sm'>
                             <InputAddress 
                                 className={`input__text ${!this.state.withdrawIsValid && 'input__error'}`}
                                 type='text'

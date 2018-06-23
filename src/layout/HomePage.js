@@ -18,7 +18,7 @@ class HomePage extends React.Component {
             withdrawCoin: '',
             isDepositSelected: true,
             isSelected: false,
-            startTransaction: false
+            startTransaction: true
         }
     }
 
@@ -124,7 +124,7 @@ class HomePage extends React.Component {
                        {
                         !this.state.startTransaction && 
                        <section>
-                        <div className={`col-1-of-2--md ${this.state.isSelected && 'col-1-of-2--md--hide'}`}>
+                        <div className={`col-1-of-2-md ${this.state.isSelected && 'col-1-of-2-md--hide'}`}>
                             <section className='container__selector'>
                                 <CoinLimits 
                                     depositSymbol={this.state.returnCoin}

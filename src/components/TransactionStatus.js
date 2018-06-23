@@ -9,7 +9,7 @@ const TransactionStatus = (props) => (
     <div>
         <div className='row'>
             <div className='col-1-of-2-lg'>
-                <div className='col-1-of-3--sm'> 
+                <div className='col-1-of-3-sm'> 
                     <figure className='qr'>
                         <QRCode 
                             className='qr__code'
@@ -19,7 +19,7 @@ const TransactionStatus = (props) => (
                         <figcaption className='qr__label'>{props.lang.depositAddress}</figcaption>
                     </figure>
                 </div>
-                <div className='col-2-of-3--sm'>
+                <div className='col-2-of-3-sm'>
                     <div className='tx'>
                         <div>
                             <CountDownTimer
