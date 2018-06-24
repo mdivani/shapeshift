@@ -9,9 +9,9 @@ module.exports = (env) => {
     const CSSExtract = new ExtractTextPlugin('styles.css');
   
     return {
-      entry: './src/app.js',
+      entry: ['babel-polyfill','./src/app.js'],
       output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'public', 'dist'),
         filename: 'bundle.js',
       },
       module: {
@@ -25,6 +25,12 @@ module.exports = (env) => {
             use: [
               {
                 loader: 'css-loader',
+                options: {
+                  sourceMap: true
+                }
+              },
+              {
+                loader: 'postcss-loader',
                 options: {
                   sourceMap: true
                 }
@@ -46,7 +52,7 @@ module.exports = (env) => {
       devServer: {
         contentBase: path.join(__dirname, 'public'),
         historyApiFallback: true,
-        publicPath: '/'
+        publicPath: '/dist/'
       }
     };
   };
