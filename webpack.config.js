@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -9,10 +11,18 @@ module.exports = (env) => {
     const CSSExtract = new ExtractTextPlugin('styles.css');
   
     return {
-      entry: ['babel-polyfill','./src/app.js'],
+      entry: {
+        index: ['babel-polyfill','./src/app.js']
+      },
       output: {
         path: path.join(__dirname, 'public', 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].[chunkhash].js',
+        chunkFilename: '[name].[chunkhash].bundle.js'
+      },
+      optimization: {
+        splitChunks: {
+        chunks: 'all'
+        }
       },
       module: {
         rules: [{
@@ -46,7 +56,11 @@ module.exports = (env) => {
         }]
       },
       plugins: [
-        CSSExtract
+        CSSExtract,
+        new CleanWebpackPlugin(['dist']),
+        new HtmlWebpackPlugin({
+          title: 'caching'
+        })
       ],
       devtool: isProduction ? 'source-map' : 'inline-source-map',
       devServer: {
