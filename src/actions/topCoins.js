@@ -21,10 +21,12 @@ export const setTopCoins = (coins) => ({
 export const startSetTopCoins = (cb) => {
     return (dispatch) => {
         getCoinData((data) => {
-            const topCoins = data.filter((coin) => coin.shapeshift === true);
-            dispatch(setTopCoins(topCoins));
-            if(cb !== undefined) {
-                cb(topCoins);
+            if(data && data.filter) {
+                const topCoins = data.filter((coin) => coin.shapeshift === true);
+                dispatch(setTopCoins(topCoins));
+                if(cb !== undefined) {
+                    cb(topCoins);
+                }
             }
         });
     }
