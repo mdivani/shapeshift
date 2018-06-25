@@ -17,7 +17,8 @@ module.exports = (env) => {
       output: {
         path: path.join(__dirname, 'public', 'dist'),
         filename: '[name].[chunkhash].js',
-        chunkFilename: '[name].[chunkhash].bundle.js'
+        chunkFilename: '[name].[chunkhash].bundle.js',
+        publicPath: '/'
       },
       optimization: {
         splitChunks: {
@@ -59,7 +60,7 @@ module.exports = (env) => {
         CSSExtract,
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-          title: 'caching'
+          template: './public/index.html'
         })
       ],
       devtool: isProduction ? 'source-map' : 'inline-source-map',

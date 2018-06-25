@@ -10,7 +10,8 @@
     "dev-server": "webpack-dev-server --mode development",
     "start": "node server/dev-server.js",
     "predeploy": "npm run build:dev",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d public",
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",

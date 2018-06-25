@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
-import HomePage from './layout/HomePage';
 import Loading from './components/Loading';
 import AppRouter from './appRouter/AppRouter';
 import {startSetCoins, addMarketCap} from './actions/coins';
