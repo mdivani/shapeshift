@@ -31,7 +31,6 @@ const RequestTx = (amount, depositAmount, withdrawalAddress, returnAddress, coin
     shapeshiftApi.CreateFixedTx(amount, depositAmount, withdrawalAddress, returnAddress, coin1, coin2, destTag);
     shapeshiftApi.FixedAmountTx(fixedTransaction, (response) => {
         dispatch(setTransaction(response));
-        console.log(response);
     });
 }
 

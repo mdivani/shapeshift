@@ -37,7 +37,6 @@ var ShapeShift = (function() {
         xmlhttp.open(apiEp.method, url, true);
         if(type.toUpperCase() === 'POST') {
             xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            console.log(JS(data));
             xmlhttp.send(JS(data));
         } else if(type.toUpperCase() === 'GET') {
             xmlhttp.send();
@@ -252,7 +251,6 @@ var ShapeShift = (function() {
         data = FixedAmountValidate(data, this);
         var apiEp = getArgsAdder(endPoints.FixedAmountTx);
         var xmlhttp = CreateXmlHttp();
-        console.log(apiEp);
         AjaxRequest(xmlhttp, apiEp, data, function(response) {
             cbProtector(cb, response);
         });

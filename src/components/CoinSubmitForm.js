@@ -93,7 +93,6 @@ class CoinsSubmitForm extends React.Component {
                                 }, () => {
                                     //callback after validations finished and states are set
                                     if(this.state.returnIsValid && this.state.withdrawIsValid) {
-                                        console.log('start transaction');
                                         this.props.handleStartTransaction();
                                         this.props.startSetTransaction(
                                             this.state.amount,
