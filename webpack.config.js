@@ -1,7 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -16,14 +14,8 @@ module.exports = (env) => {
       },
       output: {
         path: path.join(__dirname, 'public', 'dist'),
-        filename: '[name].[chunkhash].js',
-        chunkFilename: '[name].[chunkhash].bundle.js',
+        filename: 'bundle.js',
         publicPath: '/'
-      },
-      optimization: {
-        splitChunks: {
-        chunks: 'all'
-        }
       },
       module: {
         rules: [{
@@ -57,11 +49,7 @@ module.exports = (env) => {
         }]
       },
       plugins: [
-        CSSExtract,
-        new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({
-          template: './public/index.html'
-        })
+        CSSExtract
       ],
       devtool: isProduction ? 'source-map' : 'inline-source-map',
       devServer: {
