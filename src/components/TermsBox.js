@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const TermsBox = (props) => (
     <div className='checkbox'>
@@ -10,7 +11,7 @@ const TermsBox = (props) => (
          className='checkbox__check' 
          checked={props.checked} />
         <label htmlFor='terms' className='checkbox__label'>
-        {props.lang.terms}
+        {props.lang.terms1} <Link to={'/files/terms.pdf'} target='_blank'>{props.lang.terms}</Link> {props.lang.terms2}
         </label>
     </div>
 );

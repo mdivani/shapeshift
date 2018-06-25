@@ -11,7 +11,6 @@ const language = {
         "minimum": "minimum amount",
         "deposit": "deposit",
         "receive": "receive",
-        "terms": "I agree to the Terms and certify that I am the beneficial owner of the input assets and the destination address.",
         "search": "quick search",
         "depositAddress": "deposit address",
         "remainingTime": "remaining time",
@@ -30,7 +29,10 @@ const language = {
         "pending": "pending",
         "txSuccessMessage": "transaction was successfully completed",
         "txId": "transaction Id",
-        "reason": "reason"
+        "reason": "reason",
+        "terms": "Terms",
+        "terms1": "I agree to the",
+        "terms2": "and certify that I am the beneficial owner of the input assets and the destination address."
     },
     "jp" : {
         "returnAddress": "通貨送付元アドレス",
@@ -43,7 +45,6 @@ const language = {
         "title": "交換に使用する通貨を選んで下さい。",
         "deposit": "使用通貨",
         "receive": "受け取り通貨",
-        "terms": "利用規約に同意する",
         "search": "検索",
         "depositAddress": "入金アドレス",
         "remainingTime": "入金までの残り時間",
@@ -62,7 +63,10 @@ const language = {
         "pending": "入金待ち",
         "txSuccessMessage": "取引完了",
         "txId": "トランザクションID",
-        "reason": "詳細"
+        "reason": "詳細",
+        "terms": "利用規約に同意する",
+        "terms1": "",
+        "terms2": ""
     }
 }
 
