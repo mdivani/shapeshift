@@ -30,7 +30,7 @@ class TransactionContainer extends React.Component {
     componentDidUpdate() { 
         if(this.props.transaction.success && !this.state.loaded) {
             //check if special incoming coin
-            if(this.props.depositCoin.specialIncoming) {
+            if(this.props.depositCoin.specialIncoming && this.props.depositCoin.symbol === 'XRP') {
                 const dtTag = getDtTag(this.props.transaction.success.deposit);
                 this.setState({
                     deposit: this.props.transaction.success.deposit.replace(/\?dt=\d+$/g, ''),
