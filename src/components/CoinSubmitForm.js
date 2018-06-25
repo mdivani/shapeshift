@@ -153,7 +153,9 @@ class CoinsSubmitForm extends React.Component {
                                 onValueChangeHandler={this.handleWithdrawChange}
                                 required={true}
                             />
-                            {(this.props.receiveCoin && this.props.receiveCoin.specialOutgoing) && 
+                            {(this.props.receiveCoin && 
+                                this.props.receiveCoin.specialOutgoing && 
+                                this.props.receiveCoin.symbol === 'XRP') && 
                                 <InputAddress
                                     className={`input__text ${!this.state.withdrawIsValid && 'input__error'}`}
                                     label={this.props.receiveCoin.fieldName}
