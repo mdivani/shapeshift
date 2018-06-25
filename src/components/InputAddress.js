@@ -10,6 +10,7 @@ const InputAddress = (props) => {
                 value={props.value}
                 onChange={props.onValueChangeHandler}
                 autoFocus={props.focused}
+                required={!!props.required}
                 />
             <label className='input__label'>{props.label}</label>
         </div>

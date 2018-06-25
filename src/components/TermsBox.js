@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 const TermsBox = (props) => (
     <div className='checkbox'>
         <input 
+         required
          id='terms' 
          type='checkbox' 
          onChange={props.onChange}

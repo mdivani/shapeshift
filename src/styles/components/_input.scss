@@ -12,6 +12,10 @@
         &:focus {
             outline: none;
             box-shadow: 0 2px 4px rgba($color-highlight, .15), 0px -2px 4px rgba($color-highlight, .15);
+
+            &:invalid {
+                box-shadow: 0 3px 4px rgba($color-warning, .15), 0px -3px 4px rgba($color-warning, .15);
+            }
         }
         &::placeholder {
             text-transform: capitalize;
@@ -35,7 +39,7 @@
     }
 
     &__error {
-        box-shadow: 0 2px 4px rgba($color-warning, .15), 0px -2px 4px rgba($color-warning, .15);
+        box-shadow: 0 3px 4px rgba($color-warning, .15), 0px -3px 4px rgba($color-warning, .15);
     }
 
     @media (max-width: 500px) {

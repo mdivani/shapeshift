@@ -131,6 +131,7 @@ class CoinsSubmitForm extends React.Component {
                                 value={this.state.returnAddress}
                                 isvalid={this.state.returnIsValid}
                                 onValueChangeHandler={this.handleReturnChange}
+                                required={true}
                                 />
                             <InputAddress 
                                 className={`input__text ${!this.state.amountIsValid && 'input__error'}`}
@@ -139,6 +140,7 @@ class CoinsSubmitForm extends React.Component {
                                 value={this.state.value}
                                 isvalid={this.state.amountIsValid}
                                 onValueChangeHandler={this.handleAmountChange}
+                                required={true}
                             />
                         </div>
                         <div className='col-1-of-2-sm'>
@@ -149,6 +151,7 @@ class CoinsSubmitForm extends React.Component {
                                 value={this.state.withdrawAddress}
                                 isvalid={this.state.withdrawIsValid}
                                 onValueChangeHandler={this.handleWithdrawChange}
+                                required={true}
                             />
                             {(this.props.receiveCoin && this.props.receiveCoin.specialOutgoing) && 
                                 <InputAddress
@@ -157,16 +160,12 @@ class CoinsSubmitForm extends React.Component {
                                     value={this.state.destTag}
                                     isvalid={this.state.withdrawIsValid}
                                     onValueChangeHandler={this.handleDestTagChange}
+                                    required={true}
                                 />
                             }
                         </div>
                     </div>
                     <div className='row'>
-                        {this.state.error &&                        
-                        <div className='error'>
-                            <p className='error__message'>*Please fill all the neccessary fields</p>
-                        </div>
-                        }
                         <TermsBox 
                           checked={this.state.agreed}
                           onChange={this.handleTermsAgreement}
